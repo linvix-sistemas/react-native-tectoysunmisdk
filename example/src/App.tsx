@@ -122,7 +122,7 @@ const HomeScreen = () => {
           style={{ display: 'flex', flexDirection: 'row', marginBottom: 30 }}
         >
           <TouchableOpacity
-            style={Styles.buttonHorizontal}
+            style={[Styles.buttonHorizontal, { marginLeft: 0 }]}
             onPress={onRequestPrintQrCode}
           >
             <Text style={{ color: '#fff' }}>Imprimir QRCode</Text>
@@ -140,7 +140,7 @@ const HomeScreen = () => {
           style={{ display: 'flex', flexDirection: 'row', marginBottom: 30 }}
         >
           <TouchableOpacity
-            style={Styles.buttonHorizontal}
+            style={[Styles.buttonHorizontal, { marginLeft: 0 }]}
             onPress={onRequestTextoLCD}
           >
             <Text style={{ color: '#fff' }}>LDC = Enviar TEXTO</Text>
