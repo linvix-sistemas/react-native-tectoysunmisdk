@@ -1,6 +1,6 @@
 {
-  "name": "react-native-tectoysunmisdk-example",
-  "description": "Example app for react-native-tectoysunmisdk",
+  "name": "react-native-TectoySunmiSdk-example",
+  "description": "Example app for react-native-TectoySunmiSdk",
   "version": "0.0.1",
   "private": true,
   "scripts": {

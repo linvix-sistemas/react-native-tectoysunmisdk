@@ -28,7 +28,9 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn && yarn example pods"
+    "bootstrap": "yarn example && yarn",
+    "prepublish": "yarn install",
+    "publish": "yarn npm publish --access public"
   },
   "keywords": [
     "react-native",
@@ -36,15 +38,12 @@
     "android"
   ],
   "repository": "https://github.com/linvix-sistemas/react-native-tectoysunmisdk",
-  "author": "Cristiano Cruz <dev@linvix.com.br> (https://github.com/cristiano-linvix)",
+  "author": "Cristiano Cruz <cristiano@linvix.com.br> (https://github.com/cristiano-linvix)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/linvix-sistemas/react-native-tectoysunmisdk/issues"
   },
   "homepage": "https://github.com/linvix-sistemas/react-native-tectoysunmisdk#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
     "@babel/eslint-parser": "^7.18.2",

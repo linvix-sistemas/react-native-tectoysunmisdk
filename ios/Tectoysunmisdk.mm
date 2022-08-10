@@ -1,10 +1,10 @@
-#import "Tectoysunmisdk.h"
+#import "TectoySunmiSdk.h"
 
 #ifdef RCT_NEW_ARCH_ENABLED
-#import "RNTectoysunmisdkSpec.h"
+#import "RNTectoySunmiSdkSpec.h"
 #endif
 
-@implementation Tectoysunmisdk
+@implementation TectoySunmiSdk
 RCT_EXPORT_MODULE()
 
 // Example method
@@ -24,7 +24,7 @@ RCT_REMAP_METHOD(multiply,
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-    return std::make_shared<facebook::react::NativeTectoysunmisdkSpecJSI>(params);
+    return std::make_shared<facebook::react::NativeTectoySunmiSdkSpecJSI>(params);
 }
 #endif
 

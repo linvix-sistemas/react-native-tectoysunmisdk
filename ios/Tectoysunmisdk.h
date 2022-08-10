@@ -1,5 +1,5 @@
 #import <React/RCTBridgeModule.h>
 
-@interface Tectoysunmisdk : NSObject <RCTBridgeModule>
+@interface TectoySunmiSdk : NSObject <RCTBridgeModule>
 
 @end

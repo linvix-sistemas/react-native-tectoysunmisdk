@@ -1,15 +1,15 @@
-# react-native-tectoysunmisdk
+# react-native-TectoySunmiSdk
 Wrapper para comunicação com a SDK da Sunmi para React Native.
 ## Installation
 
 ```sh
-npm install react-native-tectoysunmisdk
+npm install react-native-TectoySunmiSdk
 ```
 
 ## Usage
 
 ```js
-import { multiply } from "react-native-tectoysunmisdk";
+import { multiply } from "react-native-TectoySunmiSdk";
 
 // ...
 

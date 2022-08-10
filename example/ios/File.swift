@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  TectoysunmisdkExample
+//  TectoySunmiSdkExample
 //
 
 import Foundation
