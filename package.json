@@ -1,6 +1,6 @@
 {
   "name": "@linvix-sistemas/react-native-tectoysunmisdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -26,10 +26,10 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
-    "release": "release-it && yarn publish",
+    "release": "yarn prepare && release-it && yarn publish",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn",
-    "prepublish": "yarn install",
+    "prepublish": "yarn prepare && yarn install",
     "publish": "yarn npm publish --access public"
   },
   "keywords": [
