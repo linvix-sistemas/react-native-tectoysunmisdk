@@ -1,15 +1,15 @@
-# react-native-TectoySunmiSdk
+# @linvix-sistemas/react-native-tectoysunmisdk
 Wrapper para comunicação com a SDK da Sunmi para React Native.
 ## Installation
 
 ```sh
-npm install react-native-TectoySunmiSdk
+npm install @linvix-sistemas/react-native-tectoysunmisdk
 ```
 
 ## Usage
 
 ```js
-import { multiply } from "react-native-TectoySunmiSdk";
+import { multiply } from "@linvix-sistemas/react-native-tectoysunmisdk";
 
 // ...
 

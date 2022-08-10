@@ -5,7 +5,7 @@ import NativeModuleTectToySunmiCashBoxSDK from './tectoysunmi-cashbox';
 import NativeModuleTectToySunmiLCDSDK from './tectoysunmi-lcd';
 
 const LINKING_ERROR =
-  `The package 'react-native-TectoySunmiSdk' doesn't seem to be linked. Make sure: \n\n` +
+  `The package '@linvix-sistemas/react-native-tectoysunmisdk' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';

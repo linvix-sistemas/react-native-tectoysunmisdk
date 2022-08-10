@@ -1,6 +1,6 @@
 {
-  "name": "react-native-TectoySunmiSdk-example",
-  "description": "Example app for react-native-TectoySunmiSdk",
+  "name": "@linvix-sistemas/react-native-tectoysunmisdk-example",
+  "description": "Example app for @linvix-sistemas/react-native-tectoysunmisdk",
   "version": "0.0.1",
   "private": true,
   "scripts": {

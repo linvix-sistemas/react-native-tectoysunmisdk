@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   dependencies: {
-    'react-native-TectoySunmiSdk': {
+    '@linvix-sistemas/react-native-tectoysunmisdk': {
       root: path.join(__dirname, '..'),
     },
   },
