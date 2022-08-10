@@ -1,6 +1,6 @@
 {
   "name": "@linvix-sistemas/react-native-tectoysunmisdk",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
