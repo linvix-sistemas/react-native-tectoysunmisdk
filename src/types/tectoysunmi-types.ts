@@ -34,8 +34,4 @@ export type TectoyLCDMultiTextoType = {
   texto3_peso_tamanho: number;
 };
 
-export type TectoyLCDFuncaoType =
-  | TectoyLCDFuncaoEnum.INICIALIZAR
-  | TectoyLCDFuncaoEnum.LIGAR_LCD
-  | TectoyLCDFuncaoEnum.DESLIGAR_LCD
-  | TectoyLCDFuncaoEnum.LIMPAR_TELA;
+export type TectoyLCDFuncaoType = TectoyLCDFuncaoEnum;

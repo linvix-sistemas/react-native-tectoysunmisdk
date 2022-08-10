@@ -1,29 +1,93 @@
 # @linvix-sistemas/react-native-tectoysunmisdk
-Wrapper para comunicação com a SDK da Sunmi para React Native.
-## Installation
+Wrapper para comunicação com a SDK da Sunmi/Tectoy para React Native.
+
+## Atenção
+Este pacote foi desenvolvido para facilitar a integração com o SDK da Sunmi/Tectoy para comunicar com os produtos/equipamentos da empresa.
+
+Verifique a documentação da Sunmi para maior endentimento das funções e possíveis implementações adicionais.
+
+Esta biblioteca não está completa com todos os recursos disponíveis da sunmi/tectoy, caso você consiga implementar novas funções, contribua com o pacote e torne ele mais útil para todos os que utilizam.
+
+---
+
+## Testado nos equipamentos
+### [D2S Combo](https://tectoyautomacao.com.br/produtos/terminais-pdv/pos-desktop-d2s-combo) - Possúi gaveta
+### [T2 Mini](https://tectoyautomacao.com.br/produtos/terminais-pdv/pdv-desktop-t2-mini) - Sem leitor câmera integrada
+
+## Instalação
 
 ```sh
 npm install @linvix-sistemas/react-native-tectoysunmisdk
 ```
 
-## Usage
+```sh
+yarn add @linvix-sistemas/react-native-tectoysunmisdk
+```
+## Uso
 
 ```js
-import { multiply } from "@linvix-sistemas/react-native-tectoysunmisdk";
-
-// ...
-
-const result = await multiply(3, 7);
+import NativeModuleTectToySunmiSDK, { TectoyLCDFuncaoEnum, TectoyLCDMultiTextoType } from '@linvix-sistemas/react-native-tectoysunmisdk';
 ```
 
-## Contributing
+Veja a pasta [example](example/src/App.tsx) para verificar como utilizar.
 
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+---
+## [Types](src/types/tectoysunmi-types.ts) - [Enums](src/enums/tectoysunmisdk-enum.ts) 
+---
+## Metódos - Impressora
+Lista de métodos expostos para utlização com a impressora.
+
+### ObterStatus
+```ts
+// Lembre-se de que o status da impressora pode variar dependendo do dispositivo utilizado pela tectoy, sempre verifique o manual.
+await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+```
+
+
+### ImprimirTexto
+```ts
+await NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(texto: string);
+```
+### ImprimirQRCode
+```ts
+await NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
+```
+### AvancarLinha
+```ts
+await NativeModuleTectToySunmiSDK.impressora.AvancarLinha(numero_linhas = 5);
+```
+### Avancar3Linhas
+```ts
+await NativeModuleTectToySunmiSDK.impressora.Avancar3Linhas();
+```
+
+---
+
+## Metódos - LCD
+Lista de métodos expostos para utlização com a impressora.
+
+### ControlarLCD
+```ts
+// Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
+// TectoyLCDFuncaoEnum.INICIALIZAR
+// TectoyLCDFuncaoEnum.LIGAR_LCD
+// TectoyLCDFuncaoEnum.DESLIGAR_LCD
+// TectoyLCDFuncaoEnum.LIMPAR_TELA
+await NativeModuleTectToySunmiSDK.lcd.ControlarLCD(funcao: TectoyLCDFuncaoEnum);
+```
+### EnviarTexto
+```ts
+await NativeModuleTectToySunmiSDK.lcd.EnviarTexto(texto: string);
+```
+### EnviarTextos
+```ts
+await NativeModuleTectToySunmiSDK.lcd.EnviarTextos(data: TectoyLCDMultiTextoType);
+```
+
+---
+## Contribuindo
+Fique a vontade para fazer contribuições no projeto, ele é um projeto que a Linvix Sistemas está utilizando em seus projetos e achou conveniente disponibilizar para a comunidade.
 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
