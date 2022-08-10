@@ -28,7 +28,9 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn"
+    "bootstrap": "yarn example && yarn",
+    "prepublish": "yarn install",
+    "publish": "yarn npm publish --access public"
   },
   "keywords": [
     "react-native",
@@ -89,7 +91,7 @@
       "tagName": "v${version}"
     },
     "npm": {
-      "publish": true
+      "publish": false
     },
     "github": {
       "release": true
@@ -144,8 +146,5 @@
         }
       ]
     ]
-  },
-  "publishConfig": {
-    "registry": "https://registry.yarnpkg.com/"
   }
 }
