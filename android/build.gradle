@@ -20,11 +20,11 @@ if (isNewArchitectureEnabled()) {
 }
 
 def getExtOrDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['Tectoysunmisdk_' + name]
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['TectoySunmiSdk_' + name]
 }
 
 def getExtOrIntegerDefault(name) {
-  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['Tectoysunmisdk_' + name]).toInteger()
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['TectoySunmiSdk_' + name]).toInteger()
 }
 
 android {
@@ -115,23 +115,27 @@ repositories {
 
   if (!found) {
     throw new GradleException(
-      "${project.name}: unable to locate React Native android sources. " +
-      "Ensure you have you installed React Native as a dependency in your project and try again."
+      "${project.name}: unable to locate React Native android sources.\nEnsure you have you installed React Native as a dependency in your project and try again."
     )
   }
 }
 
 
 dependencies {
-    //noinspection GradleDynamicVersion
+  //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-// From node_modules
+
+  // Necessário para gerar BarCode
+  implementation files('libs/core-3.3.0.jar')
+
+  // Obrigatorio para usar a class SunmiPrintHelper
+  implementation 'com.sunmi:printerlibrary:1.0.19'
 }
 
 if (isNewArchitectureEnabled()) {
   react {
     jsRootDir = file("../src/")
-    libraryName = "Tectoysunmisdk"
+    libraryName = "TectoySunmiSdk"
     codegenJavaPackageName = "com.reactnativetectoysunmisdk"
   }
 }
