@@ -88,7 +88,7 @@
   "release-it": {
     "git": {
       "commitMessage": "release ${version}",
-      "tagName": "v-${version}"
+      "tagName": "v${version}"
     },
     "npm": {
       "publish": false
