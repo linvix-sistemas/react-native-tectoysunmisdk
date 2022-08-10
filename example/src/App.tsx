@@ -10,7 +10,6 @@ const HomeScreen = () => {
   const onRequestPrintQrCode = async () => {
     try {
       const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
-
       console.log(status);
 
       NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode({
@@ -20,6 +19,25 @@ const HomeScreen = () => {
       });
 
       NativeModuleTectToySunmiSDK.impressora.AvancarLinha(3);
+
+      NativeModuleTectToySunmiSDK.impressora.CortarPapel();
+    } catch (error: Error | any) {
+      console.log(error.code);
+      console.log(error.message);
+      console.log(JSON.stringify(error));
+    }
+  };
+
+  const onRequestPrintText = async () => {
+    try {
+      const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+      console.log(status);
+
+      NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(
+        'LINVIX SISTEMAS\nwww.linvix.com.br'
+      );
+
+      NativeModuleTectToySunmiSDK.impressora.AvancarLinha(8);
 
       NativeModuleTectToySunmiSDK.impressora.CortarPapel();
     } catch (error: Error | any) {
@@ -126,6 +144,13 @@ const HomeScreen = () => {
             onPress={onRequestPrintQrCode}
           >
             <Text style={{ color: '#fff' }}>Imprimir QRCode</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={Styles.buttonHorizontal}
+            onPress={onRequestPrintText}
+          >
+            <Text style={{ color: '#fff' }}>Imprimir Texto</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
