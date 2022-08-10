@@ -87,8 +87,8 @@
   },
   "release-it": {
     "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "commitMessage": "release ${version}",
+      "tagName": "v-${version}"
     },
     "npm": {
       "publish": false
