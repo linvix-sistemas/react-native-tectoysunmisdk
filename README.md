@@ -50,7 +50,7 @@ await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(texto: string);
 ```
-### ImprimirQRCode
+### ImprimirQRCode - [ImprimirQRCodeType](src/types/tectoysunmi-types.ts#L26)
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
 ```
@@ -68,7 +68,7 @@ await NativeModuleTectToySunmiSDK.impressora.Avancar3Linhas();
 ## Metódos - LCD
 Lista de métodos expostos para utlização com a impressora.
 
-### ControlarLCD
+### ControlarLCD - [TectoyLCDFuncaoEnum](src/enums/tectoysunmisdk-enum.ts#L1)
 ```ts
 // Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
 // TectoyLCDFuncaoEnum.INICIALIZAR
