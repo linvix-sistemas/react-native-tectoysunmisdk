@@ -1,6 +1,6 @@
 {
   "name": "@linvix-sistemas/react-native-tectoysunmisdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -28,9 +28,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn",
-    "prepublish": "yarn install",
-    "publish": "yarn npm publish --access public"
+    "bootstrap": "yarn example && yarn"
   },
   "keywords": [
     "react-native",
