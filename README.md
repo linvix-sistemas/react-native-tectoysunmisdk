@@ -36,6 +36,7 @@ Veja a pasta [example](example/src/App.tsx) para verificar como utilizar.
 ---
 ## [Types](src/types/tectoysunmi-types.ts) - [Enums](src/enums/tectoysunmisdk-enum.ts) 
 ---
+
 ## Metódos - Impressora
 Lista de métodos expostos para utlização com a impressora.
 
@@ -44,8 +45,6 @@ Lista de métodos expostos para utlização com a impressora.
 // Lembre-se de que o status da impressora pode variar dependendo do dispositivo utilizado pela tectoy, sempre verifique o manual.
 await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
 ```
-
-
 ### ImprimirTexto
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(texto: string);
@@ -62,11 +61,10 @@ await NativeModuleTectToySunmiSDK.impressora.AvancarLinha(numero_linhas = 5);
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.Avancar3Linhas();
 ```
-
 ---
 
 ## Metódos - LCD
-Lista de métodos expostos para utlização com a impressora.
+Lista de métodos expostos para utlização com o LCD.
 
 ### ControlarLCD - [TectoyLCDFuncaoEnum](src/enums/tectoysunmisdk-enum.ts#L1)
 ```ts
@@ -85,8 +83,17 @@ await NativeModuleTectToySunmiSDK.lcd.EnviarTexto(texto: string);
 ```ts
 await NativeModuleTectToySunmiSDK.lcd.EnviarTextos(data: TectoyLCDMultiTextoType);
 ```
-
 ---
+
+## Metódos - Gavega
+Lista de métodos expostos para utlização com a gaveta.
+
+### AbrirGaveta
+```ts
+await NativeModuleTectToySunmiSDK.gaveta.AbrirGaveta();
+```
+---
+
 ## Contribuindo
 Fique a vontade para fazer contribuições no projeto, ele é um projeto que a Linvix Sistemas está utilizando em seus projetos e achou conveniente disponibilizar para a comunidade.
 
