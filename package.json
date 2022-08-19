@@ -1,7 +1,7 @@
 {
   "name": "@linvix-sistemas/react-native-tectoysunmisdk",
   "version": "1.0.3",
-  "description": "test",
+  "description": "Pacote de comunicação com o hardware de Sunmi/Tectoy Automação, para efetuar impressão, comunicação com LCD entre outros.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
