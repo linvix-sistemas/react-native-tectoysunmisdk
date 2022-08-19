@@ -34,8 +34,10 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "android",
+    "tectoy",
+    "sunmi",
+    "automacao"
   ],
   "repository": "https://github.com/linvix-sistemas/react-native-tectoysunmisdk",
   "author": "Cristiano Cruz <cristiano@linvix.com.br> (https://github.com/cristiano-linvix)",
