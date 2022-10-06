@@ -47,6 +47,24 @@ const HomeScreen = () => {
     }
   };
 
+  const onRequestPrintRaw = async () => {
+    // PALAVRA: TESTE (HEX)
+    const bytes = [0x54, 0x45, 0x53, 0x54, 0x45];
+
+    try {
+      const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+      console.log(status);
+
+      NativeModuleTectToySunmiSDK.impressora.ImprimirRAW(bytes);
+
+      NativeModuleTectToySunmiSDK.impressora.CortarPapel();
+    } catch (error: Error | any) {
+      console.log(error.code);
+      console.log(error.message);
+      console.log(JSON.stringify(error));
+    }
+  };
+
   const onRequestAbrirGaveta = async () => {
     try {
       const result = await NativeModuleTectToySunmiSDK.gaveta.AbrirGaveta();
@@ -151,6 +169,13 @@ const HomeScreen = () => {
             onPress={onRequestPrintText}
           >
             <Text style={{ color: '#fff' }}>Imprimir Texto</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={Styles.buttonHorizontal}
+            onPress={onRequestPrintRaw}
+          >
+            <Text style={{ color: '#fff' }}>Imprimir TEXTO - RAW</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

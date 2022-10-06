@@ -6,6 +6,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.module.annotations.ReactModule;
 
 import android.annotation.SuppressLint;
@@ -24,6 +25,7 @@ import android.util.Log;
 
 import com.sunmi.extprinterservice.ExtPrinterService;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +35,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 @ReactModule(name = TectoySunmiSdkModule.NAME)
 public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
@@ -272,6 +275,24 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     } else {
       TectoySunmiPrint.getInstance().initPrinter();
       TectoySunmiPrint.getInstance().printBarCode(text, type, weight, height, text_position);
+      TectoySunmiPrint.getInstance().feedPaper();
+    }
+  }
+
+  @ReactMethod
+  public void printRaw(ReadableArray message) {
+
+    byte[] decoded = new byte[message.size()];
+
+    for (int i = 0; i < message.size(); i++) {
+      decoded[i] = new Integer(message.getInt(i)).byteValue();
+    }
+
+    if (getDeviceName().equals("SUNMI K2")) {
+      kPrinterPresenter.sendRawData(decoded);
+    } else {
+      TectoySunmiPrint.getInstance().initPrinter();
+      TectoySunmiPrint.getInstance().sendRawData(decoded);
       TectoySunmiPrint.getInstance().feedPaper();
     }
   }

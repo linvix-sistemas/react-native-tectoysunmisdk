@@ -24,6 +24,14 @@ const ImprimirTexto = (texto = '') => {
   }
 };
 
+const ImprimirRAW = (bytes: any) => {
+  try {
+    TectoySunmiSdk.printRaw(bytes);
+  } catch (error) {
+    throw error;
+  }
+};
+
 const AvancarLinha = (linhas = 0) => {
   try {
     TectoySunmiSdk.feedAdvancesLines(linhas);
@@ -60,6 +68,7 @@ const NativeModuleTectToySunmiPrinterSDK = {
   ObterStatus,
   ImprimirTexto,
   ImprimirQRCode,
+  ImprimirRAW,
   CortarPapel,
   AvancarLinha,
   Avancar3Linhas,
