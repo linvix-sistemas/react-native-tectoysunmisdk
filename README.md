@@ -49,6 +49,15 @@ await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(texto: string);
 ```
+### ImprimirRaw
+Pode ser utilizado para enviar bytes gerados no lado do react-native diretamente para a impressora.
+Olhar documentação ESC/POS ou alguma lib que possúa geração de comandos ESC/POS.
+```ts
+// palavra: teste
+const bytes = [0x54, 0x45, 0x53, 0x54, 0x45];
+await NativeModuleTectToySunmiSDK.impressora.ImprimirRAW(bytes);
+```
+
 ### ImprimirQRCode - [ImprimirQRCodeType](src/types/tectoysunmi-types.ts#L26)
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
