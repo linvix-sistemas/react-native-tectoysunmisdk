@@ -280,7 +280,7 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void printRaw(ReadableArray message) {
+  public void printRaw(ReadableArray message, int lines) {
 
     byte[] decoded = new byte[message.size()];
 
@@ -293,7 +293,7 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     } else {
       TectoySunmiPrint.getInstance().initPrinter();
       TectoySunmiPrint.getInstance().sendRawData(decoded);
-      TectoySunmiPrint.getInstance().feedPaper();
+      TectoySunmiPrint.getInstance().printAdvanceLines(lines);
     }
   }
 

@@ -24,9 +24,9 @@ const ImprimirTexto = (texto = '') => {
   }
 };
 
-const ImprimirRAW = (bytes: any) => {
+const ImprimirRAW = (bytes: any, feed_lines: number = 0) => {
   try {
-    TectoySunmiSdk.printRaw(bytes);
+    TectoySunmiSdk.printRaw(bytes, feed_lines);
   } catch (error) {
     throw error;
   }
