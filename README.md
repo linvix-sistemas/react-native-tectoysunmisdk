@@ -13,6 +13,7 @@ Esta biblioteca não está completa com todos os recursos disponíveis da sunmi/
 ## Testado nos equipamentos
 #### [D2S Combo](https://tectoyautomacao.com.br/produtos/terminais-pdv/pos-desktop-d2s-combo) - Possuí gaveta
 #### [T2 Mini](https://tectoyautomacao.com.br/produtos/terminais-pdv/pdv-desktop-t2-mini) - Sem leitor câmera integrada
+#### [T2s](https://tectoyautomacao.com.br/produtos/terminais-pdv/pdv-desktop-t2s) - Impressora 80mm (48col)
 
 ---
 
