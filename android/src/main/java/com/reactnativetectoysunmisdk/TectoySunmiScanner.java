@@ -22,7 +22,7 @@ public class TectoySunmiScanner {
   private static final String DATA = "data";
   private static final String SOURCE = "source_byte";
 
-  private static final String JS_EVENT_NAME = "BARCODE_READED";
+  private static final String JS_EVENT_NAME = "SUNMI_TECTOY_BARCODE_READED";
 
   private static IScanInterface scanInterface;
 
