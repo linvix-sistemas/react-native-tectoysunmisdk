@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.reactnativetectoysunmisdk">
+  package="com.reactnativetectoysunmisdk"
+  android:sharedUserId="android.uid.system">
 
   <protected-broadcast android:name="com.sunmi.scanner.ACTION_DATA_CODE_RECEIVED" />
 </manifest>
