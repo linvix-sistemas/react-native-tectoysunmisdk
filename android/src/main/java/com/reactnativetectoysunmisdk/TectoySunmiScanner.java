@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.sql.Array;
 
@@ -38,11 +39,13 @@ public class TectoySunmiScanner {
   private static ServiceConnection conn = new ServiceConnection() {
     @Override
     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+      Log.d("TECTOY-SCANNER-STATUS", "service-connected");
       scanInterface = IScanInterface.Stub.asInterface(iBinder);
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
+      Log.d("TECTOY-SCANNER-STATUS", "service-disconnected");
       scanInterface = null;
     }
   };
@@ -56,11 +59,14 @@ public class TectoySunmiScanner {
       // params enviados para o react native
       WritableMap params = new WritableNativeMap();
 
+      Log.d("TECTOY-SCANNER-DATA", code);
+
       try {
         if (code != null && !code.isEmpty()) {
           // monta o params
           params.putString("code", code);
-          params.putString("bytes", arr.toString());
+          // arr vem como null, ai da erro
+          // params.putString("bytes", new String(arr));
 
           // envia o evento para o react-native
           reactContext
