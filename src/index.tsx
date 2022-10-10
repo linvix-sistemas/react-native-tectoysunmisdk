@@ -2,6 +2,7 @@ import { NativeModules, Platform } from 'react-native';
 
 import NativeModuleTectToySunmiPrinterSDK from './tectoysunmi-printer';
 import NativeModuleTectToySunmiCashBoxSDK from './tectoysunmi-cashbox';
+import NativeModuleTectToySunmiScannerSDK from './tectoysunmi-scanner';
 import NativeModuleTectToySunmiLCDSDK from './tectoysunmi-lcd';
 
 const LINKING_ERROR =
@@ -24,6 +25,7 @@ NativeModules.TectoySunmiSdk
 const NativeModuleTectToySunmiSDK = {
   impressora: NativeModuleTectToySunmiPrinterSDK,
   gaveta: NativeModuleTectToySunmiCashBoxSDK,
+  scanner: NativeModuleTectToySunmiScannerSDK,
   lcd: NativeModuleTectToySunmiLCDSDK,
 };
 
