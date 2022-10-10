@@ -25,7 +25,6 @@ import android.util.Log;
 
 import com.sunmi.extprinterservice.ExtPrinterService;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,12 +34,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 
 @ReactModule(name = TectoySunmiSdkModule.NAME)
 public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   public static final String NAME = "TectoySunmiSdk";
 
+  private TectoySunmiScanner scannerHelper;
   private ExtPrinterService extPrinterService = null;
 
   @SuppressLint("StaticFieldLeak")
@@ -52,6 +51,9 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     } else {
       TectoySunmiPrint.getInstance().initSunmiPrinterService(context);
     }
+
+    // cria o scanner helper
+    scannerHelper = new TectoySunmiScanner(context);
 
     // cria pasta das imagens
     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
