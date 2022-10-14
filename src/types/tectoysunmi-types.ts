@@ -36,7 +36,7 @@ export type TectoyLCDMultiTextoType = {
 
 export type TectoyLCDFuncaoType = TectoyLCDFuncaoEnum;
 
-export type TectoyBarcodeOnReadType = {
+export type TectoyScannerOnBarcodeReadType = {
   code: string;
   // bytes: string;
 };

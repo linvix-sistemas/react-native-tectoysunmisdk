@@ -1,9 +1,9 @@
 import { DeviceEventEmitter } from 'react-native';
 
-import type { TectoyBarcodeOnReadType } from './types/tectoysunmi-types';
+import type { TectoyScannerOnBarcodeReadType } from './types/tectoysunmi-types';
 
 const onBarcodeRead = async (
-  callback: (ev: TectoyBarcodeOnReadType) => void
+  callback: (ev: TectoyScannerOnBarcodeReadType) => void
 ) => {
   const listener = DeviceEventEmitter.addListener(
     'SUNMI_TECTOY_BARCODE_READED',
