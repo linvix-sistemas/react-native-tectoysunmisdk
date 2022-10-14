@@ -21,13 +21,16 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 
+import com.google.zxing.WriterException;
 import com.sunmi.extprinterservice.ExtPrinterService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -360,6 +363,53 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   //            TectoySunmiPrint.getInstance().controlLcd(flag);
   //        }
   //    }
+
+
+  // -----------------------------------------------------------------------------------------------------------------------
+  // -------------- CÓDIGOS DE BARRAS
+  // -----------------------------------------------------------------------------------------------------------------------
+
+  @ReactMethod
+  public void Barcode_Generate(
+    String content,
+    int format,
+    int width,
+    int height,
+
+    final Promise promise
+
+  ) {
+    JSONObject json = new JSONObject();
+
+    try {
+
+      /**
+       * Gera o bitmap
+       */
+      Bitmap bitmap = BitmapUtil.generateBitmap(content, format, width, height);
+
+      /**
+       * Converte o bitmap para BASE64
+       */
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+      bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+      String code = Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
+
+      /**
+       * Coloca o base64 no response
+       */
+      json.put("code", code);
+
+      /**
+       * Resolve a promise
+       */
+      promise.resolve(json.toString());
+
+    } catch (IllegalArgumentException | WriterException | JSONException e) {
+      promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
+    }
+
+  }
 
 
   // -----------------------------------------------------------------------------------------------------------------------
