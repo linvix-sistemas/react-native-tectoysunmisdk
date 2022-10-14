@@ -1,6 +1,9 @@
 package com.reactnativetectoysunmisdk;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
+
+import androidx.core.graphics.ColorUtils;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -23,7 +26,16 @@ public class BitmapUtil {
    * @param height
    * @return
    */
-  public static Bitmap generateBitmap(String content, int format, int width, int height) throws WriterException, IllegalArgumentException {
+  public static Bitmap generateBitmap(
+    String content,
+    int format,
+    int width,
+    int height,
+
+    String backgroundColor,
+    String codeColor
+  )
+    throws WriterException, IllegalArgumentException {
     if (content == null || content.equals(""))
       return null;
 
@@ -79,9 +91,9 @@ public class BitmapUtil {
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         if (encode.get(j, i)) {
-          pixels[i * width + j] = 0x00000000;
+          pixels[i * width + j] = Color.parseColor(codeColor);
         } else {
-          pixels[i * width + j] = 0xffffffff;
+          pixels[i * width + j] = Color.parseColor(backgroundColor);
         }
       }
     }

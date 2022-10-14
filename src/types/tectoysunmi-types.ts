@@ -49,4 +49,7 @@ export type TectoyBarcodeGerarType = {
   formato: TectoyBarcodeFormatEnum;
   largura: number;
   altura: number;
+
+  cor: string;
+  cor_fundo: string;
 };
