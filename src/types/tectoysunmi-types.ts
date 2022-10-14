@@ -1,4 +1,7 @@
-import type { TectoyLCDFuncaoEnum } from '../enums/tectoysunmisdk-enum';
+import type {
+  TectoyBarcodeFormatEnum,
+  TectoyLCDFuncaoEnum,
+} from '../enums/tectoysunmisdk-enum';
 
 export type ImprimirQRCodeType = {
   data: string;
@@ -39,4 +42,11 @@ export type TectoyLCDFuncaoType = TectoyLCDFuncaoEnum;
 export type TectoyScannerOnBarcodeReadType = {
   code: string;
   // bytes: string;
+};
+
+export type TectoyBarcodeGerarType = {
+  conteudo: string;
+  formato: TectoyBarcodeFormatEnum;
+  largura: number;
+  altura: number;
 };

@@ -4,6 +4,7 @@ import NativeModuleTectToySunmiPrinterSDK from './tectoysunmi-printer';
 import NativeModuleTectToySunmiCashBoxSDK from './tectoysunmi-cashbox';
 import NativeModuleTectToySunmiScannerSDK from './tectoysunmi-scanner';
 import NativeModuleTectToySunmiLCDSDK from './tectoysunmi-lcd';
+import NativeModuleTectToySunmiBarcodeSDK from './tectoysunmi-barcode';
 
 const LINKING_ERROR =
   `The package '@linvix-sistemas/react-native-tectoysunmisdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -27,6 +28,7 @@ const NativeModuleTectToySunmiSDK = {
   gaveta: NativeModuleTectToySunmiCashBoxSDK,
   scanner: NativeModuleTectToySunmiScannerSDK,
   lcd: NativeModuleTectToySunmiLCDSDK,
+  barcode: NativeModuleTectToySunmiBarcodeSDK,
 };
 
 export * from './types/tectoysunmi-types';
