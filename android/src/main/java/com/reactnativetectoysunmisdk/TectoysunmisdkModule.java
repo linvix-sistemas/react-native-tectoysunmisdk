@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.UiThreadUtil;
 import com.facebook.react.module.annotations.ReactModule;
 
 import android.annotation.SuppressLint;
@@ -43,6 +44,8 @@ import java.net.URL;
 public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   public static final String NAME = "TectoySunmiSdk";
 
+  private final Context appContext;
+
   private TectoySunmiScanner scannerHelper;
   private ExtPrinterService extPrinterService = null;
 
@@ -50,6 +53,11 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   public static KTectoySunmiPrinter kPrinterPresenter;
 
   public TectoySunmiSdkModule(ReactApplicationContext context) {
+    super(context);
+
+    // pega o contexto da aplicação
+    this.appContext = context.getApplicationContext();
+
     if (getDeviceName().equals("SUNMI K2")) {
       connectKPrintService();
     } else {
@@ -428,29 +436,36 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void Utilidades_ModoFullScreen(boolean enable, final Promise promise) {
-    // pega a view atual
-    View view = getCurrentActivity().getWindow().getDecorView();
 
-    int flags;
+    UiThreadUtil.runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        // pega a view atual
+        View view = getCurrentActivity().getWindow().getDecorView();
 
-    if (enable) {
-      flags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  // hide nav bar
-        | View.SYSTEM_UI_FLAG_FULLSCREEN  // hide status bar
-        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-    } else {
-      flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-    }
+        int flags;
 
-    // define as flags
-    view.setSystemUiVisibility(flags);
+        if (enable) {
+          flags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  // hide nav bar
+            | View.SYSTEM_UI_FLAG_FULLSCREEN  // hide status bar
+            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        } else {
+          flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+        }
 
-    // resolve a promessa
-    promise.resolve(true);
+        // define as flags
+        view.setSystemUiVisibility(flags);
+
+        // resolve a promessa
+        promise.resolve(true);
+
+      }
+    });
   }
 
 
