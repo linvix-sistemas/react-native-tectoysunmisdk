@@ -23,6 +23,7 @@ import android.os.IBinder;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 
 import com.google.zxing.WriterException;
 import com.sunmi.extprinterservice.ExtPrinterService;
@@ -422,6 +423,33 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void Utilidades_FecharApp(final Promise promise) {
     android.os.Process.killProcess(android.os.Process.myPid());
+    promise.resolve(true);
+  }
+
+  @ReactMethod
+  public void Utilidades_ModoFullScreen(boolean enable, final Promise promise) {
+    // pega a view atual
+    View view = getCurrentActivity().getWindow().getDecorView();
+
+    int flags;
+
+    if (enable) {
+      flags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  // hide nav bar
+        | View.SYSTEM_UI_FLAG_FULLSCREEN  // hide status bar
+        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+    } else {
+      flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+    }
+
+    // define as flags
+    view.setSystemUiVisibility(flags);
+
+    // resolve a promessa
     promise.resolve(true);
   }
 
