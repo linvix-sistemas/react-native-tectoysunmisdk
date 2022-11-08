@@ -1,6 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
   package="com.reactnativetectoysunmisdk"
   android:sharedUserId="android.uid.system">
 
   <protected-broadcast android:name="com.sunmi.scanner.ACTION_DATA_CODE_RECEIVED" />
+
+  <uses-permission
+    android:name="android.permission.REBOOT"
+    tools:ignore="ProtectedPermissions" />
 </manifest>

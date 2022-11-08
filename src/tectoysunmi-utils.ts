@@ -18,9 +18,18 @@ const ModoFullScreen = async (ativar: boolean = true) => {
   }
 };
 
+const ReiniciarDispositivo = async (motivo = '') => {
+  try {
+    return await TectoySunmiSdk.Utilidades_ReiniciarDispositivo(motivo);
+  } catch (error) {
+    throw error;
+  }
+};
+
 const NativeModuleTectToySunmiUtilsSDK = {
   FecharApp,
   ModoFullScreen,
+  ReiniciarDispositivo,
 };
 
 export default NativeModuleTectToySunmiUtilsSDK;

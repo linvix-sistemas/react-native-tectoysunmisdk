@@ -21,6 +21,8 @@ import android.graphics.Matrix;
 import android.os.Build;
 import android.os.Environment;
 import android.os.IBinder;
+import android.os.PowerManager;
+import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -466,6 +468,17 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
       }
     });
+  }
+
+  @ReactMethod
+  public void Utilidades_ReiniciarDispositivo(String reason, final Promise promise) {
+    PowerManager powerManager = (PowerManager) getReactApplicationContext().getSystemService(Context.POWER_SERVICE);
+
+    // força o reinício
+    powerManager.reboot(reason);
+
+    // resolve a promessa
+    promise.resolve(true);
   }
 
 
