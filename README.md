@@ -112,6 +112,22 @@ Lista de métodos expostos para utlização com o LED.
 // TectoyLampLedEnum.LED-6
 await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampStatusEnum, led: TectoyLampLedEnum);
 ```
+
+### ControlarLampadaLoop - [TectoyLampStatusEnum](src/enums/tectoysunmisdk-enum.ts) | [TectoyLampLedEnum](src/enums/tectoysunmisdk-enum.ts)
+```ts
+// Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
+// TectoyLampStatusEnum.LIGAR
+// TectoyLampStatusEnum.DESLIGAR
+//
+// TectoyLampLedEnum.LED-1
+// TectoyLampLedEnum.LED-2
+// TectoyLampLedEnum.LED-3
+// TectoyLampLedEnum.LED-4
+// TectoyLampLedEnum.LED-5
+// TectoyLampLedEnum.LED-6
+await NativeModuleTectToySunmiSDK.lampada.ControlarLampadaLoop(status: TectoyLampStatusEnum, onTime: number, offTime: number, led: TectoyLampLedEnum);
+```
+
 ### Desligar
 ```ts
 await NativeModuleTectToySunmiSDK.lampada.Desligar();
