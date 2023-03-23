@@ -104,12 +104,12 @@ Lista de métodos expostos para utlização com o LED.
 // TectoyLampStatusEnum.LIGAR
 // TectoyLampStatusEnum.DESLIGAR
 //
-// TectoyLampLedEnum.LED-1
-// TectoyLampLedEnum.LED-2
-// TectoyLampLedEnum.LED-3
-// TectoyLampLedEnum.LED-4
-// TectoyLampLedEnum.LED-5
-// TectoyLampLedEnum.LED-6
+// TectoyLampLedEnum.LED_1
+// TectoyLampLedEnum.LED_2
+// TectoyLampLedEnum.LED_3
+// TectoyLampLedEnum.LED_4
+// TectoyLampLedEnum.LED_5
+// TectoyLampLedEnum.LED_6
 await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampStatusEnum, led: TectoyLampLedEnum);
 ```
 
@@ -119,12 +119,12 @@ await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampSta
 // TectoyLampStatusEnum.LIGAR
 // TectoyLampStatusEnum.DESLIGAR
 //
-// TectoyLampLedEnum.LED-1
-// TectoyLampLedEnum.LED-2
-// TectoyLampLedEnum.LED-3
-// TectoyLampLedEnum.LED-4
-// TectoyLampLedEnum.LED-5
-// TectoyLampLedEnum.LED-6
+// TectoyLampLedEnum.LED_1
+// TectoyLampLedEnum.LED_2
+// TectoyLampLedEnum.LED_3
+// TectoyLampLedEnum.LED_4
+// TectoyLampLedEnum.LED_5
+// TectoyLampLedEnum.LED_6
 await NativeModuleTectToySunmiSDK.lampada.ControlarLampadaLoop(status: TectoyLampStatusEnum, onTime: number, offTime: number, led: TectoyLampLedEnum);
 ```
 

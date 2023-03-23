@@ -11,12 +11,12 @@ export enum TectoyLampStatusEnum {
 }
 
 export enum TectoyLampLedEnum {
-  'LED-1' = 'Led-1',
-  'LED-2' = 'Led-2',
-  'LED-3' = 'Led-3',
-  'LED-4' = 'Led-4',
-  'LED-5' = 'Led-5',
-  'LED-6' = 'Led-6',
+  'LED_1' = 'Led-1',
+  'LED_2' = 'Led-2',
+  'LED_3' = 'Led-3',
+  'LED_4' = 'Led-4',
+  'LED_5' = 'Led-5',
+  'LED_6' = 'Led-6',
 }
 
 export enum TectoyBarcodeFormatEnum {
