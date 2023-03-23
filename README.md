@@ -95,6 +95,29 @@ await NativeModuleTectToySunmiSDK.lcd.EnviarTextos(data: TectoyLCDMultiTextoType
 ```
 ---
 
+## Metódos - Lampada (K2/K2 MINI)
+Lista de métodos expostos para utlização com o LED.
+
+### ControlarLampada - [TectoyLampStatusEnum](src/enums/tectoysunmisdk-enum.ts) | [TectoyLampLedEnum](src/enums/tectoysunmisdk-enum.ts) 
+```ts
+// Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
+// TectoyLampStatusEnum.LIGAR
+// TectoyLampStatusEnum.DESLIGAR
+//
+// TectoyLampLedEnum.LED-1
+// TectoyLampLedEnum.LED-2
+// TectoyLampLedEnum.LED-3
+// TectoyLampLedEnum.LED-4
+// TectoyLampLedEnum.LED-5
+// TectoyLampLedEnum.LED-6
+await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampStatusEnum, led: TectoyLampLedEnum);
+```
+### Desligar
+```ts
+await NativeModuleTectToySunmiSDK.lampada.Desligar();
+```
+---
+
 ## Metódos - Gavega
 Lista de métodos expostos para utlização com a gaveta.
 
