@@ -100,7 +100,7 @@ Lista de métodos expostos para utlização com o LED.
 
 ### ControlarLampada - [TectoyLampStatusEnum](src/enums/tectoysunmisdk-enum.ts) | [TectoyLampLedEnum](src/enums/tectoysunmisdk-enum.ts) 
 ```ts
-// Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
+// Função utilizada para controlar o LED superior nos dispotivos K2 e K2 Mini.
 // TectoyLampStatusEnum.LIGAR
 // TectoyLampStatusEnum.DESLIGAR
 //
@@ -115,7 +115,7 @@ await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampSta
 
 ### ControlarLampadaLoop - [TectoyLampStatusEnum](src/enums/tectoysunmisdk-enum.ts) | [TectoyLampLedEnum](src/enums/tectoysunmisdk-enum.ts)
 ```ts
-// Função utilizada para controlar o display lcd disponível em algúns modelos da tectoy/sunmi.
+// Função utilizada para controlar o LED superior nos dispotivos K2 e K2 Mini.
 // TectoyLampStatusEnum.LIGAR
 // TectoyLampStatusEnum.DESLIGAR
 //
