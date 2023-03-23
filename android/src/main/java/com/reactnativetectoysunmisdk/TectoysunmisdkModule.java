@@ -49,7 +49,9 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   private final Context appContext;
 
   private TectoySunmiScanner scannerHelper;
+  private TectoySunmiLamp lampHelper;
   private ExtPrinterService extPrinterService = null;
+
 
   @SuppressLint("StaticFieldLeak")
   public static KTectoySunmiPrinter kPrinterPresenter;
@@ -68,6 +70,9 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
     // cria o scanner helper
     scannerHelper = new TectoySunmiScanner(context);
+
+    // cria o lamp helper
+    lampHelper = new TectoySunmiLamp(context);
 
     // cria pasta das imagens
     if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -310,6 +315,37 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
       TectoySunmiPrint.getInstance().initPrinter();
       TectoySunmiPrint.getInstance().sendRawData(decoded);
       TectoySunmiPrint.getInstance().printAdvanceLines(lines);
+    }
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------------
+  // -------------- LAMPADA
+  // -----------------------------------------------------------------------------------------------------------------------
+
+  @ReactMethod
+  private void Lampada_ControlarLampada(int status, String lamp, final Promise promise) {
+    if (getDeviceName().contains("K2")) {
+      lampHelper.ControlarLuz(status, lamp);
+    } else {
+
+    }
+  }
+
+  @ReactMethod
+  private void Lampada_ControlarLampadaLoop(int status, long onTime, long offTime, String lamp, final Promise promise) {
+    if (getDeviceName().contains("K2")) {
+      lampHelper.ControlarLuzLoop(status, onTime, offTime, lamp);
+    } else {
+
+    }
+  }
+
+  @ReactMethod
+  private void Lampada_Desligar(final Promise promise) {
+    if (getDeviceName().contains("K2")) {
+      lampHelper.DesligarLuz();
+    } else {
+
     }
   }
 

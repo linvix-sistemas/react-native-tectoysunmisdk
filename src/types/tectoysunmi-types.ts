@@ -1,5 +1,7 @@
 import type {
   TectoyBarcodeFormatEnum,
+  TectoyLampLedEnum,
+  TectoyLampStatusEnum,
   TectoyLCDFuncaoEnum,
 } from '../enums/tectoysunmisdk-enum';
 
@@ -38,6 +40,9 @@ export type TectoyLCDMultiTextoType = {
 };
 
 export type TectoyLCDFuncaoType = TectoyLCDFuncaoEnum;
+
+export type TectoyLampStatusType = TectoyLampStatusEnum;
+export type TectoyLampLedType = TectoyLampLedEnum;
 
 export type TectoyScannerOnBarcodeReadType = {
   code: string;

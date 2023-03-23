@@ -5,6 +5,20 @@ export enum TectoyLCDFuncaoEnum {
   'LIMPAR_TELA' = 4,
 }
 
+export enum TectoyLampStatusEnum {
+  'LIGAR' = 0,
+  'DESLIGAR' = 1,
+}
+
+export enum TectoyLampLedEnum {
+  'LED-1' = 'Led-1',
+  'LED-2' = 'Led-2',
+  'LED-3' = 'Led-3',
+  'LED-4' = 'Led-4',
+  'LED-5' = 'Led-5',
+  'LED-6' = 'Led-6',
+}
+
 export enum TectoyBarcodeFormatEnum {
   'UPC_A' = 0,
   'UPC_E' = 1,
