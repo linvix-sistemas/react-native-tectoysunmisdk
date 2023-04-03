@@ -1120,7 +1120,7 @@ __metadata:
     patch-package: ^6.4.7
     postinstall-postinstall: ^2.1.0
     react: 17.0.2
-    react-native: 0.68.2
+    react-native: 0.68.6
   languageName: unknown
   linkType: soft
 
@@ -5139,12 +5139,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"promise@npm:^8.0.3":
-  version: 8.1.0
-  resolution: "promise@npm:8.1.0"
+"promise@npm:^8.2.0":
+  version: 8.3.0
+  resolution: "promise@npm:8.3.0"
   dependencies:
     asap: ~2.0.6
-  checksum: 89b71a56154ed7d66a73236d8e8351a9c59adddba3929ecc845f75421ff37fc08ea0c67ad76cd5c0b0d81812c7d07a32bed27e7df5fcc960c6d68b0c1cd771f7
+  checksum: a69f0ddbddf78ffc529cffee7ad950d307347615970564b17988ce43fbe767af5c738a9439660b24a9a8cbea106c0dcbb6c2b20e23b7e96a8e89e5c2679e94d5
   languageName: node
   linkType: hard
 
@@ -5210,15 +5210,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-codegen@npm:^0.0.17":
-  version: 0.0.17
-  resolution: "react-native-codegen@npm:0.0.17"
+"react-native-codegen@npm:^0.0.18":
+  version: 0.0.18
+  resolution: "react-native-codegen@npm:0.0.18"
   dependencies:
     "@babel/parser": ^7.14.0
     flow-parser: ^0.121.0
     jscodeshift: ^0.13.1
     nullthrows: ^1.1.1
-  checksum: 32ac7e77851df32fdafa6721c01e3bbfe4e42ca4b8e6d6e7e64b96200060629b3c0475bd7007de6db96b4c5edef1f6dd625fb7b77efa8f7fd1869c0777b064cc
+  checksum: 55af378d630cae2323e56da9d6840e21a78ff811b39353b7c0935e8ca77d39f46dd1ef797b013c6a9a1c5ca7ceeff6203dadba9fca9b920dec810cdba1ca863c
   languageName: node
   linkType: hard
 
@@ -5229,9 +5229,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.68.2":
-  version: 0.68.2
-  resolution: "react-native@npm:0.68.2"
+"react-native@npm:0.68.6":
+  version: 0.68.6
+  resolution: "react-native@npm:0.68.6"
   dependencies:
     "@jest/create-cache-key-function": ^27.0.1
     "@react-native-community/cli": ^7.0.3
@@ -5253,9 +5253,9 @@ __metadata:
     metro-source-map: 0.67.0
     nullthrows: ^1.1.1
     pretty-format: ^26.5.2
-    promise: ^8.0.3
+    promise: ^8.2.0
     react-devtools-core: ^4.23.0
-    react-native-codegen: ^0.0.17
+    react-native-codegen: ^0.0.18
     react-native-gradle-plugin: ^0.0.6
     react-refresh: ^0.4.0
     react-shallow-renderer: 16.14.1
@@ -5269,7 +5269,7 @@ __metadata:
     react: 17.0.2
   bin:
     react-native: cli.js
-  checksum: a595e7c284041d0ea6439f476d4e34239212f6ca7863321d214494ac938c83a89ae8b79f86bda7c515be727ffec7403456f8f721fca7f8670cf1fa9bf19b0b1d
+  checksum: 2458616315c93bbbd412f2c1a0bf8faac57711c0673c0e1c3a2b07778146f5e41cb97d0c8e3912620303fdff4de009834670f29e914bb6139379dea02d7c3070
   languageName: node
   linkType: hard
 

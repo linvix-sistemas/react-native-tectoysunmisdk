@@ -4,6 +4,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 // NATIVE MODULES
 import NativeModuleTectToySunmiSDK, {
   TectoyLCDFuncaoEnum,
+  TectoyLampLedEnum,
+  TectoyLampStatusEnum,
 } from '@linvix-sistemas/react-native-tectoysunmisdk';
 
 const HomeScreen = () => {
@@ -84,6 +86,20 @@ const HomeScreen = () => {
         true
       );
       console.log('onRequestTextoLCD', result);
+    } catch (error: Error | any) {
+      console.log(error.code);
+      console.log(error.message);
+      console.log(JSON.stringify(error));
+    }
+  };
+
+  const onRequestLampada = async (led: TectoyLampLedEnum) => {
+    try {
+      const result = await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(
+        TectoyLampStatusEnum.LIGAR,
+        led
+      );
+      console.log('onRequestLampada', result);
     } catch (error: Error | any) {
       console.log(error.code);
       console.log(error.message);
@@ -183,6 +199,57 @@ const HomeScreen = () => {
             onPress={onRequestAbrirGaveta}
           >
             <Text style={{ color: '#fff' }}>Abrir Gaveta de Dinheiro</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            marginBottom: 30,
+            flexWrap: 'wrap',
+          }}
+        >
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal, { marginLeft: 0 }]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_1)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 1</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_2)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 2</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_3)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 3</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_4)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 4</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_5)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 5</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Styles.buttonHorizontal]}
+            onPress={() => onRequestLampada(TectoyLampLedEnum.LED_6)}
+          >
+            <Text style={{ color: '#fff' }}>LAMPADA = LED 6</Text>
           </TouchableOpacity>
         </View>
 

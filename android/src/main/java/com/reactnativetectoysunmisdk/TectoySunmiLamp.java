@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 
 import com.facebook.react.bridge.*;
@@ -24,17 +25,17 @@ public class TectoySunmiLamp {
     }
   }
 
-  public void ControlarLuz(int status, String lamp) {
+  public void ControlarLuz(int status, String lamp) throws RemoteException {
     lampInterface.closeAllLamp();
     lampInterface.controlLamp(status, lamp);
   }
 
-  public void ControlarLuzLoop(int status, long lightTime, long putoutTime, String lamp) {
+  public void ControlarLuzLoop(int status, long lightTime, long putoutTime, String lamp) throws RemoteException {
     lampInterface.closeAllLamp();
     lampInterface.controlLampForLoop(status, lightTime, putoutTime, lamp);
   }
 
-  public void DesligarLuz() {
+  public void DesligarLuz() throws RemoteException {
     lampInterface.closeAllLamp();
   }
 

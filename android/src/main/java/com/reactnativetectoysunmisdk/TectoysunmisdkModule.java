@@ -325,27 +325,42 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   @ReactMethod
   private void Lampada_ControlarLampada(int status, String lamp, final Promise promise) {
     if (getDeviceName().contains("K2")) {
-      lampHelper.ControlarLuz(status, lamp);
+      try {
+        lampHelper.ControlarLuz(status, lamp);
+        promise.resolve(true);
+      } catch (Throwable e) {
+        promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
+      }
     } else {
-
+      promise.resolve(false);
     }
   }
 
   @ReactMethod
   private void Lampada_ControlarLampadaLoop(int status, long onTime, long offTime, String lamp, final Promise promise) {
     if (getDeviceName().contains("K2")) {
-      lampHelper.ControlarLuzLoop(status, onTime, offTime, lamp);
+      try {
+        lampHelper.ControlarLuzLoop(status, onTime, offTime, lamp);
+        promise.resolve(true);
+      } catch (Throwable e) {
+        promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
+      }
     } else {
-
+      promise.resolve(false);
     }
   }
 
   @ReactMethod
   private void Lampada_Desligar(final Promise promise) {
     if (getDeviceName().contains("K2")) {
-      lampHelper.DesligarLuz();
+      try {
+        lampHelper.DesligarLuz();
+        promise.resolve(true);
+      } catch (Throwable e) {
+        promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
+      }
     } else {
-
+      promise.resolve(false);
     }
   }
 
