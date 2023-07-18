@@ -15,6 +15,8 @@ Esta biblioteca não está completa com todos os recursos disponíveis da sunmi/
 #### [T2 Mini](https://tectoyautomacao.com.br/produtos/terminais-pdv/pdv-desktop-t2-mini) - Sem leitor câmera integrada
 #### [T2s](https://tectoyautomacao.com.br/produtos/terminais-pdv/pdv-desktop-t2s) - Impressora 80mm (48col)
 
+#### [L2s](https://tectoyautomacao.com.br/produtos/terminais-moveis/computador-de-mao-l2s) - Coletor de dados SEM teclado físico
+#### [L2K](https://tectoyautomacao.com.br/produtos/terminais-moveis/computador-de-mao-l2k) - Coletor de dados COM teclado físico
 ---
 
 ## Instalação
@@ -41,7 +43,7 @@ Veja a pasta [example](example/src/App.tsx) para verificar como utilizar.
 ## Metódos - Impressora
 Lista de métodos expostos para utlização com a impressora.
 
-### ObterStatus
+### ObterStatus - [StatusImpressoraType](src/types/tectoysunmi-types.ts#L08)
 ```ts
 // Lembre-se de que o status da impressora pode variar dependendo do dispositivo utilizado pela tectoy, sempre verifique o manual.
 await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
@@ -59,7 +61,7 @@ const bytes = [0x54, 0x45, 0x53, 0x54, 0x45];
 await NativeModuleTectToySunmiSDK.impressora.ImprimirRAW(bytes);
 ```
 
-### ImprimirQRCode - [ImprimirQRCodeType](src/types/tectoysunmi-types.ts#L26)
+### ImprimirQRCode - [ImprimirQRCodeType](src/types/tectoysunmi-types.ts#L14)
 ```ts
 await NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
 ```
@@ -140,6 +142,48 @@ Lista de métodos expostos para utlização com a gaveta.
 ### AbrirGaveta
 ```ts
 await NativeModuleTectToySunmiSDK.gaveta.AbrirGaveta();
+```
+---
+
+## Métodos - Scanner
+Métodos para interação com leitor de código de barras
+
+### onBarcodeRead (broadcast)
+Este método é um "listener" ou seja, ele aguarda que o evento ocorra, e dispara a função de callback quando o evento acontece.
+```ts
+useEffect(() => {
+   // Em dispositivos que possúem leitor de código de barras ou o suporte via USB.
+   // Ex: D2Mini, D2SCombo, T2s com leitor USB externo (precisa configurar broadcast).
+   // Para funcionar a leitura do código, precisa configurar o dispositivo para fazer broadcast dos dados e desabilitar TextInput para saída de texto.
+   //
+   // L2s/L2ks também funciona aqui com leitura de código de barras.
+   //
+   // Importante chamar cleanup para remover o listener da função quando quiser parar de receber o código de barras lido.
+   //
+  const cleanup = NativeModuleTectToySunmiSDK.scanner.onBarcodeRead((ev) => {
+    console.log(ev);
+  });
+  
+  return () => cleanup();
+}, []);
+  ```
+  ---
+## Métodos - Utilidades
+Métodos auxiliares que podem ser úteis.
+
+### FecharApp
+```ts
+await NativeModuleTectToySunmiSDK.utils.FecharApp();
+```
+
+### Reiniciar Dispositivo
+```ts
+await NativeModuleTectToySunmiSDK.utils.ReiniciarDispositivo(motivo: string);
+```
+
+### Modo Full Screen
+```ts
+await NativeModuleTectToySunmiSDK.utils.ModoFullScreen(ativar: boolean = true);
 ```
 ---
 
