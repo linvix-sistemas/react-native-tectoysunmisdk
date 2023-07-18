@@ -1,6 +1,9 @@
 import { NativeModules } from 'react-native';
 
-import type { ImprimirQRCodeType } from './types/tectoysunmi-types';
+import type {
+  ImprimirQRCodeType,
+  StatusImpressoraType,
+} from './types/tectoysunmi-types';
 
 const { TectoySunmiSdk } = NativeModules;
 
@@ -10,7 +13,7 @@ const { TectoySunmiSdk } = NativeModules;
 const ObterStatus = async () => {
   try {
     const status = await TectoySunmiSdk.getStatus();
-    return JSON.parse(status);
+    return JSON.parse(status) as StatusImpressoraType;
   } catch (error) {
     throw error;
   }

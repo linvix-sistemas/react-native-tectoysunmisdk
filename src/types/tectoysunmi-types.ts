@@ -5,6 +5,12 @@ import type {
   TectoyLCDFuncaoEnum,
 } from '../enums/tectoysunmisdk-enum';
 
+export type StatusImpressoraType = {
+  code: number;
+  device_name: string;
+  status: string;
+};
+
 export type ImprimirQRCodeType = {
   data: string;
   size:
