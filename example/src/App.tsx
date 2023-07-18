@@ -1,5 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect } from 'react';
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 // NATIVE MODULES
 import NativeModuleTectToySunmiSDK, {
@@ -167,11 +174,38 @@ const HomeScreen = () => {
     }
   };
 
+  /**
+   * Registra o listener do código de barras.
+   */
+  useEffect(() => {
+    /**
+     * Em dispositivos que possúem leitor de código de barras ou o suporte via USB.
+     * Ex: T2s com leitor USB externo.
+     * Para funcionar a leitura do código, precisa configurar o dispositivo para fazer broadcast dos dados e desabilitar TextInput para saída de texto.
+     *
+     * L2s/L2ks também funciona aqui com leitura de código de barras.
+     *
+     * Importante chamar cleanup para remover o listener da função quando quiser parar de receber o código de barras lido.
+     */
+    const cleanup = NativeModuleTectToySunmiSDK.scanner.onBarcodeRead((ev) => {
+      console.log(ev);
+      Alert.alert('Código de barras lido', ev.code);
+    });
+
+    return () => cleanup();
+  }, []);
+
   return (
     <View style={Styles.main}>
-      <View style={Styles.container}>
+      <ScrollView contentContainerStyle={Styles.container}>
         <View
-          style={{ display: 'flex', flexDirection: 'row', marginBottom: 30 }}
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginBottom: 30,
+            flexWrap: 'wrap',
+          }}
         >
           <TouchableOpacity
             style={[Styles.buttonHorizontal, { marginLeft: 0 }]}
@@ -204,8 +238,9 @@ const HomeScreen = () => {
 
         <View
           style={{
-            display: 'flex',
+            width: '100%',
             flexDirection: 'row',
+            justifyContent: 'space-around',
             marginBottom: 30,
             flexWrap: 'wrap',
           }}
@@ -254,7 +289,13 @@ const HomeScreen = () => {
         </View>
 
         <View
-          style={{ display: 'flex', flexDirection: 'row', marginBottom: 30 }}
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginBottom: 30,
+            flexWrap: 'wrap',
+          }}
         >
           <TouchableOpacity
             style={[Styles.buttonHorizontal, { marginLeft: 0 }]}
@@ -291,19 +332,21 @@ const HomeScreen = () => {
             <Text style={{ color: '#fff' }}>LDC -&gt; LIMPAR</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 
 const Styles = StyleSheet.create({
   main: {
+    padding: 20,
     display: 'flex',
     flex: 1,
   },
 
   container: {
     flexGrow: 1,
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
@@ -320,7 +363,7 @@ const Styles = StyleSheet.create({
   },
 
   buttonHorizontal: {
-    marginLeft: 30,
+    marginBottom: 10,
     backgroundColor: 'blue',
     padding: 10,
     borderRadius: 3,
