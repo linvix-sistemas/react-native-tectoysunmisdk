@@ -33,7 +33,8 @@ public class BitmapUtil {
     int height,
 
     String backgroundColor,
-    String codeColor
+    String codeColor,
+    Float margin
   )
     throws WriterException, IllegalArgumentException {
     if (content == null || content.equals(""))
@@ -83,6 +84,10 @@ public class BitmapUtil {
 
     hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
     hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+
+    if (margin != null) {
+      hints.put(EncodeHintType.MARGIN, margin);
+    }
 
     BitMatrix encode = qrCodeWriter.encode(content, barcodeFormat, width, height, hints);
 

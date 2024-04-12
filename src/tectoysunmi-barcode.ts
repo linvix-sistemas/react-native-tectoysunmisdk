@@ -20,7 +20,8 @@ const Gerar = async (data: TectoyBarcodeGerarType) => {
       data.altura,
 
       data.cor,
-      data.cor_fundo
+      data.cor_fundo,
+      data.margem ?? null
     );
 
     return JSON.parse(result);
