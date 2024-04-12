@@ -437,10 +437,10 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     int format,
     int width,
     int height,
+    int margin,
 
     String color,
     String backgroundColor,
-    Float margin,
 
     final Promise promise
 
@@ -452,7 +452,7 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
       /**
        * Gera o bitmap
        */
-      Bitmap bitmap = BitmapUtil.generateBitmap(content, format, width, height, backgroundColor, color, margin);
+      Bitmap bitmap = BitmapUtil.generateBitmap(content, format, width, height, margin, color, backgroundColor);
 
       /**
        * Converte o bitmap para BASE64

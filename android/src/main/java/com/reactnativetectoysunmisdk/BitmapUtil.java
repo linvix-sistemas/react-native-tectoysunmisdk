@@ -31,14 +31,17 @@ public class BitmapUtil {
     int format,
     int width,
     int height,
+    int margin,
 
-    String backgroundColor,
     String codeColor,
-    Float margin
+    String backgroundColor
   )
     throws WriterException, IllegalArgumentException {
     if (content == null || content.equals(""))
       return null;
+
+    MultiFormatWriter qrCodeWriter = new MultiFormatWriter();
+    Map<EncodeHintType, Object> hints = new HashMap<>();
 
     BarcodeFormat barcodeFormat;
 
@@ -74,20 +77,15 @@ public class BitmapUtil {
         barcodeFormat = BarcodeFormat.QR_CODE;
         break;
       default:
-        barcodeFormat = BarcodeFormat.QR_CODE;
         height = width;
+        barcodeFormat = BarcodeFormat.QR_CODE;
+        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        hints.put(EncodeHintType.MAX_SIZE, width);
         break;
     }
 
-    MultiFormatWriter qrCodeWriter = new MultiFormatWriter();
-    Map<EncodeHintType, Object> hints = new HashMap<>();
-
     hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-    hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
-
-    if (margin != null) {
-      hints.put(EncodeHintType.MARGIN, margin);
-    }
+    hints.put(EncodeHintType.MARGIN, margin);
 
     BitMatrix encode = qrCodeWriter.encode(content, barcodeFormat, width, height, hints);
 
@@ -103,7 +101,6 @@ public class BitmapUtil {
       }
     }
 
-    return Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.RGB_565);
-
+    return Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
   }
 }
