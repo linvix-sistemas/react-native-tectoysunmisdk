@@ -337,10 +337,10 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  private void Lampada_ControlarLampadaLoop(int status, long onTime, long offTime, String lamp, final Promise promise) {
+  private void Lampada_ControlarLampadaLoop(int status, double onTime, double offTime, String lamp, final Promise promise) {
     if (getDeviceName().contains("K2")) {
       try {
-        lampHelper.ControlarLuzLoop(status, onTime, offTime, lamp);
+        lampHelper.ControlarLuzLoop(status, (long) onTime, (long) offTime, lamp);
         promise.resolve(true);
       } catch (Throwable e) {
         promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
