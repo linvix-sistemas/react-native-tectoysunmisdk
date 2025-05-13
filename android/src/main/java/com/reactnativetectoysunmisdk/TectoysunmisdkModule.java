@@ -92,77 +92,6 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   // -------------- IMPRESSORA
   // -----------------------------------------------------------------------------------------------------------------------
 
-  @ReactMethod
-  public void printStyleAntiWhite() {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleAntiWhite(true);
-    }
-  }
-
-  @ReactMethod
-  public void resetStyle() {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleReset();
-    }
-  }
-
-  @ReactMethod
-  public void styleUnderline(Boolean underline) {
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printStyleUnderLine();
-    } else {
-      TectoySunmiPrint.getInstance().printStyleUnderLine(underline);
-    }
-  }
-
-  @ReactMethod
-  public void aling(int aling) {
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.setAlign(aling);
-    } else {
-      TectoySunmiPrint.getInstance().setAlign(aling);
-    }
-  }
-
-  @ReactMethod
-  public void printTable(String[] txt, int[] width, int[] aling) {
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printTable(txt, width, aling);
-    } else {
-      TectoySunmiPrint.getInstance().printTable(txt, width, aling);
-    }
-  }
-
-  @ReactMethod
-  public void styleDoubleHeight(Boolean bold) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleDoubleHeight(bold);
-    }
-  }
-
-  @ReactMethod
-  public void styleDoubleWidth(Boolean bold) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleDoubleWidth(bold);
-    }
-  }
-
-  @ReactMethod
-  public void printSytlebold(Boolean bold) {
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printStyleBold(bold);
-    } else {
-      TectoySunmiPrint.getInstance().printStyleBold(bold);
-    }
-  }
 
   @ReactMethod
   public void cutpaper() {
@@ -170,51 +99,6 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
       kPrinterPresenter.cutPaper(1, 2);
     } else {
       TectoySunmiPrint.getInstance().cutPaper();
-    }
-  }
-
-  @ReactMethod
-  public void styleInvert(Boolean invert) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleInvert(invert);
-    }
-  }
-
-  @ReactMethod
-  public void styleStrike(Boolean bool) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleStrikethRough(bool);
-    }
-  }
-
-  @ReactMethod
-  public void printTextWithSize(String texto, int size) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printTextWithSize(texto, size);
-    }
-  }
-
-  @ReactMethod
-  public void styleItalic(Boolean italic) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().printStyleItalic(italic);
-    }
-  }
-
-  @ReactMethod
-  public void openCashBox(final Promise promise) {
-    if (getDeviceName().equals("SUNMI K2")) {
-
-    } else {
-      TectoySunmiPrint.getInstance().openCashBox(promise);
     }
   }
 
@@ -228,20 +112,22 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void printDoubleQr(String txt, String txt1, int mode, int error) {
+  public void printBarcode(String text, int type, int weight, int height, int text_position) {
     if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printDoubleQRCode(txt, txt1, mode, error);
+      kPrinterPresenter.barcode(text, type, weight, height, text_position);
     } else {
-      TectoySunmiPrint.getInstance().printDoubleQRCode(txt, txt1, mode, error);
+      TectoySunmiPrint.getInstance().initPrinter();
+      TectoySunmiPrint.getInstance().printBarCode(text, type, weight, height, text_position);
+      TectoySunmiPrint.getInstance().feedPaper();
     }
   }
 
   @ReactMethod
-  public void feedAdvancesLines(int av) {
+  public void openCashBox(final Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printAdvanceLines(av);
+
     } else {
-      TectoySunmiPrint.getInstance().printAdvanceLines(av);
+      TectoySunmiPrint.getInstance().openCashBox(promise);
     }
   }
 
@@ -255,11 +141,38 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void printRaw(ReadableArray message, int lines) {
+
+    byte[] decoded = new byte[message.size()];
+
+    for (int i = 0; i < message.size(); i++) {
+      decoded[i] = new Integer(message.getInt(i)).byteValue();
+    }
+
+    if (getDeviceName().equals("SUNMI K2")) {
+      kPrinterPresenter.sendRawData(decoded);
+    } else {
+      TectoySunmiPrint.getInstance().initPrinter();
+      TectoySunmiPrint.getInstance().sendRawData(decoded);
+      TectoySunmiPrint.getInstance().printAdvanceLines(lines);
+    }
+  }
+
+  @ReactMethod
   public void feed3lines() {
     if (getDeviceName().equals("SUNMI K2")) {
       kPrinterPresenter.print3Line();
     } else {
       TectoySunmiPrint.getInstance().print3Line();
+    }
+  }
+
+  @ReactMethod
+  public void feedAdvancesLines(int av) {
+    if (getDeviceName().equals("SUNMI K2")) {
+      kPrinterPresenter.printAdvanceLines(av);
+    } else {
+      TectoySunmiPrint.getInstance().printAdvanceLines(av);
     }
   }
 
@@ -289,34 +202,125 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     promise.resolve(json.toString());
   }
 
-  @ReactMethod
-  public void printBarcode(String text, int type, int weight, int height, int text_position) {
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.barcode(text, type, weight, height, text_position);
-    } else {
-      TectoySunmiPrint.getInstance().initPrinter();
-      TectoySunmiPrint.getInstance().printBarCode(text, type, weight, height, text_position);
-      TectoySunmiPrint.getInstance().feedPaper();
-    }
-  }
 
-  @ReactMethod
-  public void printRaw(ReadableArray message, int lines) {
+//  @ReactMethod
+//  public void printStyleAntiWhite() {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleAntiWhite(true);
+//    }
+//  }
 
-    byte[] decoded = new byte[message.size()];
+//  @ReactMethod
+//  public void resetStyle() {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleReset();
+//    }
+//  }
 
-    for (int i = 0; i < message.size(); i++) {
-      decoded[i] = new Integer(message.getInt(i)).byteValue();
-    }
+//  @ReactMethod
+//  public void styleUnderline(Boolean underline) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//      kPrinterPresenter.printStyleUnderLine();
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleUnderLine(underline);
+//    }
+//  }
 
-    if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.sendRawData(decoded);
-    } else {
-      TectoySunmiPrint.getInstance().initPrinter();
-      TectoySunmiPrint.getInstance().sendRawData(decoded);
-      TectoySunmiPrint.getInstance().printAdvanceLines(lines);
-    }
-  }
+//  @ReactMethod
+//  public void aling(int aling) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//      kPrinterPresenter.setAlign(aling);
+//    } else {
+//      TectoySunmiPrint.getInstance().setAlign(aling);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void printTable(String[] txt, int[] width, int[] aling) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//      kPrinterPresenter.printTable(txt, width, aling);
+//    } else {
+//      TectoySunmiPrint.getInstance().printTable(txt, width, aling);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void styleDoubleHeight(Boolean bold) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleDoubleHeight(bold);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void styleDoubleWidth(Boolean bold) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleDoubleWidth(bold);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void printSytlebold(Boolean bold) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//      kPrinterPresenter.printStyleBold(bold);
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleBold(bold);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void styleInvert(Boolean invert) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleInvert(invert);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void styleStrike(Boolean bool) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleStrikethRough(bool);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void printTextWithSize(String texto, int size) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printTextWithSize(texto, size);
+//    }
+//  }
+
+//  @ReactMethod
+//  public void styleItalic(Boolean italic) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//
+//    } else {
+//      TectoySunmiPrint.getInstance().printStyleItalic(italic);
+//    }
+//  }
+
+
+//  @ReactMethod
+//  public void printDoubleQr(String txt, String txt1, int mode, int error) {
+//    if (getDeviceName().equals("SUNMI K2")) {
+//      kPrinterPresenter.printDoubleQRCode(txt, txt1, mode, error);
+//    } else {
+//      TectoySunmiPrint.getInstance().printDoubleQRCode(txt, txt1, mode, error);
+//    }
+//  }
+
 
   // -----------------------------------------------------------------------------------------------------------------------
   // -------------- LAMPADA
@@ -387,33 +391,23 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  private void LCD_EnviarTextos(
-    String text1,
-    int text1_align,
+  private void LCD_EnviarTextos(String text1, int text1_align,
 
-    String text2,
-    int text2_align,
+                                String text2, int text2_align,
 
-    String text3,
-    int text3_align,
+                                String text3, int text3_align,
 
-    final Promise promise
-  ) {
+                                final Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
 
     } else {
-      TectoySunmiPrint.getInstance().sendTextsToLcd(
-        text1,
-        text1_align,
+      TectoySunmiPrint.getInstance().sendTextsToLcd(text1, text1_align,
 
-        text2,
-        text2_align,
+        text2, text2_align,
 
-        text3,
-        text3_align,
+        text3, text3_align,
 
-        promise
-      );
+        promise);
     }
   }
 
@@ -432,17 +426,11 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   // -----------------------------------------------------------------------------------------------------------------------
 
   @ReactMethod
-  public void Barcode_Generate(
-    String content,
-    int format,
-    int width,
-    int height,
-    int margin,
+  public void Barcode_Generate(String content, int format, int width, int height, int margin,
 
-    String color,
-    String backgroundColor,
+                               String color, String backgroundColor,
 
-    final Promise promise
+                               final Promise promise
 
   ) {
     JSONObject json = new JSONObject();
@@ -500,16 +488,11 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
         int flags;
 
         if (enable) {
-          flags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  // hide nav bar
+          flags = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION  // hide nav bar
             | View.SYSTEM_UI_FLAG_FULLSCREEN  // hide status bar
             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
         } else {
-          flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+          flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
         }
 
         // define as flags
@@ -618,12 +601,10 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
   private void salvando(Bitmap abmp) {
 
-    String file_path = Environment.getExternalStorageDirectory().getAbsolutePath() +
-      "/MeuApp/imagens/";
+    String file_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MeuApp/imagens/";
     File dir = new File(file_path);
     Log.d("Geovai", String.valueOf(abmp));
-    if (!dir.exists())
-      dir.mkdirs();
+    if (!dir.exists()) dir.mkdirs();
     File file = new File(dir, "nomedaImagembaixada");
     FileOutputStream fOut;
     try {
