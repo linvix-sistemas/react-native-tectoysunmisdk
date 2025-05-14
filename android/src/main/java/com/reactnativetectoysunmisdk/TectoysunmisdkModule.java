@@ -41,6 +41,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 @ReactModule(name = TectoySunmiSdkModule.NAME)
 public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
@@ -48,8 +50,8 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
   private final Context appContext;
 
-  private TectoySunmiScanner scannerHelper;
-  private TectoySunmiLamp lampHelper;
+  private final TectoySunmiScanner scannerHelper;
+  private final TectoySunmiLamp lampHelper;
   private ExtPrinterService extPrinterService = null;
 
 
@@ -609,7 +611,6 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
     FileOutputStream fOut;
     try {
       fOut = new FileOutputStream(file);
-      ;
       abmp.compress(Bitmap.CompressFormat.PNG, 85, fOut);
       fOut.flush();
       fOut.close();
@@ -621,5 +622,26 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
 
   }
 
+  @Override
+  public Map<String, Object> getConstants() {
+    final Map<String, Object> constants = new HashMap<>();
+
+    constants.put("DocumentDirectoryPath", getReactApplicationContext().getFilesDir().getAbsolutePath());
+    constants.put("CachesDirectoryPath", getReactApplicationContext().getCacheDir().getAbsolutePath());
+    constants.put("TemporaryDirectoryPath", getReactApplicationContext().getCacheDir().getAbsolutePath());
+    constants.put("PicturesDirectoryPath", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+    constants.put("DownloadDirectoryPath", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+
+    File externalStorageDir = Environment.getExternalStorageDirectory();
+    constants.put("ExternalStorageDirectoryPath", externalStorageDir != null ? externalStorageDir.getAbsolutePath() : null);
+
+    File appExternalFilesDir = getReactApplicationContext().getExternalFilesDir(null);
+    constants.put("AppExternalFilesDirectoryPath", appExternalFilesDir != null ? appExternalFilesDir.getAbsolutePath() : null);
+
+    File appExternalCachesDir = getReactApplicationContext().getExternalCacheDir();
+    constants.put("AppExternalCachesDirectoryPath", appExternalCachesDir != null ? appExternalCachesDir.getAbsolutePath() : null);
+
+    return constants;
+  }
 
 }

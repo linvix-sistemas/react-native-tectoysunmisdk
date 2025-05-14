@@ -25,7 +25,7 @@ NativeModules.TectoySunmiSdk
       }
     );
 
-const NativeModuleTectToySunmiSDK = {
+const TectToySunmiSDK = {
   impressora: NativeModuleTectToySunmiPrinterSDK,
   gaveta: NativeModuleTectToySunmiCashBoxSDK,
   scanner: NativeModuleTectToySunmiScannerSDK,
@@ -37,5 +37,6 @@ const NativeModuleTectToySunmiSDK = {
 
 export * from './types/tectoysunmi-types';
 export * from './enums/tectoysunmisdk-enum';
+export * from './consts/tectoysunmi-consts';
 
-export default NativeModuleTectToySunmiSDK;
+export default TectToySunmiSDK;
