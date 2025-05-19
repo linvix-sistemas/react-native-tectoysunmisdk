@@ -10,8 +10,8 @@ const AbrirGaveta = async () => {
   }
 };
 
-const NativeModuleTectToySunmiCashBoxSDK = {
+const TecToySunmiCashBoxSDK = {
   AbrirGaveta,
 };
 
-export default NativeModuleTectToySunmiCashBoxSDK;
+export default TecToySunmiCashBoxSDK;

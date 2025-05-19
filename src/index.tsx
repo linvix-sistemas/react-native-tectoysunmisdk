@@ -1,12 +1,12 @@
 import { NativeModules, Platform } from 'react-native';
 
-import NativeModuleTectToySunmiPrinterSDK from './tectoysunmi-printer';
-import NativeModuleTectToySunmiCashBoxSDK from './tectoysunmi-cashbox';
-import NativeModuleTectToySunmiScannerSDK from './tectoysunmi-scanner';
-import NativeModuleTectToySunmiLCDSDK from './tectoysunmi-lcd';
-import NativeModuleTectToySunmiBarcodeSDK from './tectoysunmi-barcode';
-import NativeModuleTectToySunmiUtilsSDK from './tectoysunmi-utils';
-import NativeModuleTectToySunmiLampadaSDK from './tectoysunmi-lampada';
+import TecToySunmiPrinterSDK from './tectoysunmi-printer';
+import TecToySunmiCashBoxSDK from './tectoysunmi-cashbox';
+import TecToySunmiScannerSDK from './tectoysunmi-scanner';
+import TecToySunmiLCDSDK from './tectoysunmi-lcd';
+import TecToySunmiBarcodeSDK from './tectoysunmi-barcode';
+import TecToySunmiUtilsSDK from './tectoysunmi-utils';
+import TecToySunmiLampadaSDK from './tectoysunmi-lampada';
 
 const LINKING_ERROR =
   `The package '@linvix-sistemas/react-native-tectoysunmisdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -25,18 +25,18 @@ NativeModules.TectoySunmiSdk
       }
     );
 
-const TectToySunmiSDK = {
-  impressora: NativeModuleTectToySunmiPrinterSDK,
-  gaveta: NativeModuleTectToySunmiCashBoxSDK,
-  scanner: NativeModuleTectToySunmiScannerSDK,
-  lcd: NativeModuleTectToySunmiLCDSDK,
-  lampada: NativeModuleTectToySunmiLampadaSDK,
-  barcode: NativeModuleTectToySunmiBarcodeSDK,
-  utils: NativeModuleTectToySunmiUtilsSDK,
+const TecToySunmiSDK = {
+  impressora: TecToySunmiPrinterSDK,
+  gaveta: TecToySunmiCashBoxSDK,
+  scanner: TecToySunmiScannerSDK,
+  lcd: TecToySunmiLCDSDK,
+  lampada: TecToySunmiLampadaSDK,
+  barcode: TecToySunmiBarcodeSDK,
+  utils: TecToySunmiUtilsSDK,
 };
 
 export * from './types/tectoysunmi-types';
 export * from './enums/tectoysunmisdk-enum';
 export * from './consts/tectoysunmi-consts';
 
-export default TectToySunmiSDK;
+export default TecToySunmiSDK;

@@ -56,10 +56,10 @@ const EnviarTextos = async (data: TectoyLCDMultiTextoType) => {
   }
 };
 
-const NativeModuleTectToySunmiLCDSDK = {
+const TecToySunmiLCDSDK = {
   ControlarLCD,
   EnviarTexto,
   EnviarTextos,
 };
 
-export default NativeModuleTectToySunmiLCDSDK;
+export default TecToySunmiLCDSDK;

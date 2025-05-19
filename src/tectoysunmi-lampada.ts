@@ -56,10 +56,10 @@ const Desligar = async () => {
   }
 };
 
-const NativeModuleTectToySunmiLampadaSDK = {
+const TecToySunmiLampadaSDK = {
   ControlarLampada,
   ControlarLampadaLoop,
   Desligar,
 };
 
-export default NativeModuleTectToySunmiLampadaSDK;
+export default TecToySunmiLampadaSDK;

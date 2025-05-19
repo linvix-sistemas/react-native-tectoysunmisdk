@@ -31,7 +31,7 @@ yarn add @linvix-sistemas/react-native-tectoysunmisdk
 ## Uso
 
 ```js
-import NativeModuleTectToySunmiSDK, { TectoyLCDFuncaoEnum, TectoyLCDMultiTextoType } from '@linvix-sistemas/react-native-tectoysunmisdk';
+import TecToySunmiSDK, { TectoyLCDFuncaoEnum, TectoyLCDMultiTextoType } from '@linvix-sistemas/react-native-tectoysunmisdk';
 ```
 
 Veja a pasta [example](example/src/App.tsx) para verificar como utilizar.
@@ -46,11 +46,11 @@ Lista de métodos expostos para utlização com a impressora.
 ### ObterStatus - [StatusImpressoraType](src/types/tectoysunmi-types.ts#L08)
 ```ts
 // Lembre-se de que o status da impressora pode variar dependendo do dispositivo utilizado pela tectoy, sempre verifique o manual.
-await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+await TecToySunmiSDK.impressora.ObterStatus();
 ```
 ### ImprimirTexto
 ```ts
-await NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(texto: string);
+await TecToySunmiSDK.impressora.ImprimirTexto(texto: string);
 ```
 ### ImprimirRaw
 Pode ser utilizado para enviar bytes gerados no lado do react-native diretamente para a impressora.
@@ -58,20 +58,20 @@ Olhar documentação ESC/POS ou alguma lib que possúa geração de comandos ESC
 ```ts
 // palavra: teste
 const bytes = [0x54, 0x45, 0x53, 0x54, 0x45];
-await NativeModuleTectToySunmiSDK.impressora.ImprimirRAW(bytes);
+await TecToySunmiSDK.impressora.ImprimirRAW(bytes);
 ```
 
 ### ImprimirQRCode - [ImprimirQRCodeType](src/types/tectoysunmi-types.ts#L14)
 ```ts
-await NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
+await TecToySunmiSDK.impressora.ImprimirQRCode(data: ImprimirQRCodeType);
 ```
 ### AvancarLinha
 ```ts
-await NativeModuleTectToySunmiSDK.impressora.AvancarLinha(numero_linhas = 5);
+await TecToySunmiSDK.impressora.AvancarLinha(numero_linhas = 5);
 ```
 ### Avancar3Linhas
 ```ts
-await NativeModuleTectToySunmiSDK.impressora.Avancar3Linhas();
+await TecToySunmiSDK.impressora.Avancar3Linhas();
 ```
 ---
 
@@ -85,15 +85,15 @@ Lista de métodos expostos para utlização com o LCD.
 // TectoyLCDFuncaoEnum.LIGAR_LCD
 // TectoyLCDFuncaoEnum.DESLIGAR_LCD
 // TectoyLCDFuncaoEnum.LIMPAR_TELA
-await NativeModuleTectToySunmiSDK.lcd.ControlarLCD(funcao: TectoyLCDFuncaoEnum);
+await TecToySunmiSDK.lcd.ControlarLCD(funcao: TectoyLCDFuncaoEnum);
 ```
 ### EnviarTexto
 ```ts
-await NativeModuleTectToySunmiSDK.lcd.EnviarTexto(texto: string);
+await TecToySunmiSDK.lcd.EnviarTexto(texto: string);
 ```
 ### EnviarTextos
 ```ts
-await NativeModuleTectToySunmiSDK.lcd.EnviarTextos(data: TectoyLCDMultiTextoType);
+await TecToySunmiSDK.lcd.EnviarTextos(data: TectoyLCDMultiTextoType);
 ```
 ---
 
@@ -112,7 +112,7 @@ Lista de métodos expostos para utlização com o LED.
 // TectoyLampLedEnum.LED_4
 // TectoyLampLedEnum.LED_5
 // TectoyLampLedEnum.LED_6
-await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampStatusEnum, led: TectoyLampLedEnum);
+await TecToySunmiSDK.lampada.ControlarLampada(status: TectoyLampStatusEnum, led: TectoyLampLedEnum);
 ```
 
 ### ControlarLampadaLoop - [TectoyLampStatusEnum](src/enums/tectoysunmisdk-enum.ts) | [TectoyLampLedEnum](src/enums/tectoysunmisdk-enum.ts)
@@ -127,12 +127,12 @@ await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(status: TectoyLampSta
 // TectoyLampLedEnum.LED_4
 // TectoyLampLedEnum.LED_5
 // TectoyLampLedEnum.LED_6
-await NativeModuleTectToySunmiSDK.lampada.ControlarLampadaLoop(status: TectoyLampStatusEnum, onTime: number, offTime: number, led: TectoyLampLedEnum);
+await TecToySunmiSDK.lampada.ControlarLampadaLoop(status: TectoyLampStatusEnum, onTime: number, offTime: number, led: TectoyLampLedEnum);
 ```
 
 ### Desligar
 ```ts
-await NativeModuleTectToySunmiSDK.lampada.Desligar();
+await TecToySunmiSDK.lampada.Desligar();
 ```
 ---
 
@@ -141,7 +141,7 @@ Lista de métodos expostos para utlização com a gaveta.
 
 ### AbrirGaveta
 ```ts
-await NativeModuleTectToySunmiSDK.gaveta.AbrirGaveta();
+await TecToySunmiSDK.gaveta.AbrirGaveta();
 ```
 ---
 
@@ -160,7 +160,7 @@ useEffect(() => {
    //
    // Importante chamar cleanup para remover o listener da função quando quiser parar de receber o código de barras lido.
    //
-  const cleanup = NativeModuleTectToySunmiSDK.scanner.onBarcodeRead((ev) => {
+  const cleanup = TecToySunmiSDK.scanner.onBarcodeRead((ev) => {
     console.log(ev);
   });
   
@@ -173,17 +173,17 @@ Métodos auxiliares que podem ser úteis.
 
 ### FecharApp
 ```ts
-await NativeModuleTectToySunmiSDK.utils.FecharApp();
+await TecToySunmiSDK.utils.FecharApp();
 ```
 
 ### Reiniciar Dispositivo
 ```ts
-await NativeModuleTectToySunmiSDK.utils.ReiniciarDispositivo(motivo: string);
+await TecToySunmiSDK.utils.ReiniciarDispositivo(motivo: string);
 ```
 
 ### Modo Full Screen
 ```ts
-await NativeModuleTectToySunmiSDK.utils.ModoFullScreen(ativar: boolean = true);
+await TecToySunmiSDK.utils.ModoFullScreen(ativar: boolean = true);
 ```
 ---
 

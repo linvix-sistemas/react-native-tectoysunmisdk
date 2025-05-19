@@ -14,8 +14,8 @@ const onBarcodeRead = (
   };
 };
 
-const NativeModuleTectToySunmiScannerSDK = {
+const TecToySunmiScannerSDK = {
   onBarcodeRead,
 };
 
-export default NativeModuleTectToySunmiScannerSDK;
+export default TecToySunmiScannerSDK;

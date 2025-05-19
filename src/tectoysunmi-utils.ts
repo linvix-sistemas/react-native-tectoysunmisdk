@@ -26,10 +26,10 @@ const ReiniciarDispositivo = async (motivo = '') => {
   }
 };
 
-const NativeModuleTectToySunmiUtilsSDK = {
+const TecToySunmiUtilsSDK = {
   FecharApp,
   ModoFullScreen,
   ReiniciarDispositivo,
 };
 
-export default NativeModuleTectToySunmiUtilsSDK;
+export default TecToySunmiUtilsSDK;

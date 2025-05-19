@@ -34,8 +34,8 @@ const Gerar = async (data: TectoyBarcodeGerarType) => {
   }
 };
 
-const NativeModuleTectToySunmiBarcodeSDK = {
+const TecToySunmiBarcodeSDK = {
   Gerar,
 };
 
-export default NativeModuleTectToySunmiBarcodeSDK;
+export default TecToySunmiBarcodeSDK;

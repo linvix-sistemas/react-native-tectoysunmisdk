@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 // NATIVE MODULES
-import NativeModuleTectToySunmiSDK, {
+import TecToySunmiSDK, {
   TectoyLCDFuncaoEnum,
   TectoyLampLedEnum,
   TectoyLampStatusEnum,
@@ -18,18 +18,18 @@ import NativeModuleTectToySunmiSDK, {
 const HomeScreen = () => {
   const onRequestPrintQrCode = async () => {
     try {
-      const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+      const status = await TecToySunmiSDK.impressora.ObterStatus();
       console.log(status);
 
-      NativeModuleTectToySunmiSDK.impressora.ImprimirQRCode({
+      TecToySunmiSDK.impressora.ImprimirQRCode({
         data: 'linvix.com.br',
         size: 10,
         error: 3,
       });
 
-      NativeModuleTectToySunmiSDK.impressora.AvancarLinha(3);
+      TecToySunmiSDK.impressora.AvancarLinha(3);
 
-      NativeModuleTectToySunmiSDK.impressora.CortarPapel();
+      TecToySunmiSDK.impressora.CortarPapel();
     } catch (error: Error | any) {
       console.log(error.code);
       console.log(error.message);
@@ -39,16 +39,16 @@ const HomeScreen = () => {
 
   const onRequestPrintText = async () => {
     try {
-      const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+      const status = await TecToySunmiSDK.impressora.ObterStatus();
       console.log(status);
 
-      NativeModuleTectToySunmiSDK.impressora.ImprimirTexto(
+      TecToySunmiSDK.impressora.ImprimirTexto(
         'LINVIX SISTEMAS\nwww.linvix.com.br'
       );
 
-      NativeModuleTectToySunmiSDK.impressora.AvancarLinha(8);
+      TecToySunmiSDK.impressora.AvancarLinha(8);
 
-      NativeModuleTectToySunmiSDK.impressora.CortarPapel();
+      TecToySunmiSDK.impressora.CortarPapel();
     } catch (error: Error | any) {
       console.log(error.code);
       console.log(error.message);
@@ -61,12 +61,12 @@ const HomeScreen = () => {
     const bytes = [0x54, 0x45, 0x53, 0x54, 0x45];
 
     try {
-      const status = await NativeModuleTectToySunmiSDK.impressora.ObterStatus();
+      const status = await TecToySunmiSDK.impressora.ObterStatus();
       console.log(status);
 
-      NativeModuleTectToySunmiSDK.impressora.ImprimirRAW(bytes);
+      TecToySunmiSDK.impressora.ImprimirRAW(bytes);
 
-      NativeModuleTectToySunmiSDK.impressora.CortarPapel();
+      TecToySunmiSDK.impressora.CortarPapel();
     } catch (error: Error | any) {
       console.log(error.code);
       console.log(error.message);
@@ -76,7 +76,7 @@ const HomeScreen = () => {
 
   const onRequestAbrirGaveta = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.gaveta.AbrirGaveta();
+      const result = await TecToySunmiSDK.gaveta.AbrirGaveta();
       console.log('onRequestAbrirGaveta', result);
     } catch (error: Error | any) {
       console.log(error.code);
@@ -87,7 +87,7 @@ const HomeScreen = () => {
 
   const onRequestTextoLCD = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lcd.EnviarTexto(
+      const result = await TecToySunmiSDK.lcd.EnviarTexto(
         'LINVIX SISTEMAS',
         16,
         true
@@ -102,7 +102,7 @@ const HomeScreen = () => {
 
   const onRequestLampada = async (led: TectoyLampLedEnum) => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lampada.ControlarLampada(
+      const result = await TecToySunmiSDK.lampada.ControlarLampada(
         TectoyLampStatusEnum.LIGAR,
         led
       );
@@ -116,7 +116,7 @@ const HomeScreen = () => {
 
   const onRequestTextosLCD = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lcd.EnviarTextos({
+      const result = await TecToySunmiSDK.lcd.EnviarTextos({
         texto1: 'LINVIX',
         texto1_peso_tamanho: 40,
 
@@ -136,7 +136,7 @@ const HomeScreen = () => {
 
   const onRequestDesligarLCD = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lcd.ControlarLCD(
+      const result = await TecToySunmiSDK.lcd.ControlarLCD(
         TectoyLCDFuncaoEnum.DESLIGAR_LCD
       );
       console.log('onRequestDesligarLCD', result);
@@ -150,7 +150,7 @@ const HomeScreen = () => {
 
   const onRequestLigarLCD = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lcd.ControlarLCD(
+      const result = await TecToySunmiSDK.lcd.ControlarLCD(
         TectoyLCDFuncaoEnum.LIGAR_LCD
       );
       console.log('onRequestLigarLCD', result);
@@ -163,7 +163,7 @@ const HomeScreen = () => {
 
   const onRequestLimparLCD = async () => {
     try {
-      const result = await NativeModuleTectToySunmiSDK.lcd.ControlarLCD(
+      const result = await TecToySunmiSDK.lcd.ControlarLCD(
         TectoyLCDFuncaoEnum.LIMPAR_TELA
       );
       console.log('onRequestLimparLCD', result);
@@ -187,7 +187,7 @@ const HomeScreen = () => {
      *
      * Importante chamar cleanup para remover o listener da função quando quiser parar de receber o código de barras lido.
      */
-    const cleanup = NativeModuleTectToySunmiSDK.scanner.onBarcodeRead((ev) => {
+    const cleanup = TecToySunmiSDK.scanner.onBarcodeRead((ev) => {
       console.log(ev);
       Alert.alert('Código de barras lido', ev.code);
     });

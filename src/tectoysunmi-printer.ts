@@ -67,7 +67,7 @@ const ImprimirQRCode = (data: ImprimirQRCodeType) => {
   }
 };
 
-const NativeModuleTectToySunmiPrinterSDK = {
+const TecToySunmiPrinterSDK = {
   ObterStatus,
   ImprimirTexto,
   ImprimirQRCode,
@@ -77,4 +77,4 @@ const NativeModuleTectToySunmiPrinterSDK = {
   Avancar3Linhas,
 };
 
-export default NativeModuleTectToySunmiPrinterSDK;
+export default TecToySunmiPrinterSDK;
