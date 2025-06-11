@@ -29,7 +29,7 @@
     "release": "yarn prepare && release-it && yarn publish",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn",
-    "prepublish": "yarn prepare && yarn install",
+    "prepublishOnly": "yarn prepare && yarn install",
     "publish": "yarn npm publish --access public",
     "style:fix": "prettier --write \"src/**/*.ts\"",
     "style:check": "prettier --check \"src/**/*.ts\""
