@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TectoySunmiSdkPackage implements ReactPackage {
+public class TectoysunmisdkPackage implements ReactPackage {
     @NonNull
     @Override
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new TectoySunmiSdkModule(reactContext));
+        modules.add(new TectoysunmisdkModule(reactContext));
         return modules;
     }
 

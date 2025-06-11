@@ -44,8 +44,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-@ReactModule(name = TectoySunmiSdkModule.NAME)
-public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
+@ReactModule(name = TectoysunmisdkModule.NAME)
+public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   public static final String NAME = "TectoySunmiSdk";
 
   private final Context appContext;
@@ -58,7 +58,7 @@ public class TectoySunmiSdkModule extends ReactContextBaseJavaModule {
   @SuppressLint("StaticFieldLeak")
   public static KTectoySunmiPrinter kPrinterPresenter;
 
-  public TectoySunmiSdkModule(ReactApplicationContext context) {
+  public TectoysunmisdkModule(ReactApplicationContext context) {
     super(context);
 
     // pega o contexto da aplicação
