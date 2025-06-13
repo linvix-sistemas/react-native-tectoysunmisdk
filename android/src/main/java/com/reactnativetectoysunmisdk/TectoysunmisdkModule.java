@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.fbreact.specs.NativeTectoySunmiSdkSpec;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.UiThreadUtil;
@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ReactModule(name = TectoysunmisdkModule.NAME)
-public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
+public class TectoysunmisdkModule extends NativeTectoySunmiSdkSpec {
   public static final String NAME = "TectoySunmiSdk";
 
   private final Context appContext;
@@ -95,7 +95,7 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   // -----------------------------------------------------------------------------------------------------------------------
 
 
-  @ReactMethod
+  @Override
   public void cutpaper() {
     if (getDeviceName().equals("SUNMI K2")) {
       kPrinterPresenter.cutPaper(1, 2);
@@ -104,28 +104,28 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void printQr(String txt, int size, int error) {
+  @Override
+  public void printQr(String txt, double size, double error) {
     if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printQrCode(txt, size, error);
+      kPrinterPresenter.printQrCode(txt, (int) size, (int) error);
     } else {
-      TectoySunmiPrint.getInstance().printQrCode(txt, size, error);
+      TectoySunmiPrint.getInstance().printQrCode(txt, (int) size, (int) error);
     }
   }
 
-  @ReactMethod
-  public void printBarcode(String text, int type, int weight, int height, int text_position) {
+  @Override
+  public void printBarcode(String text, double type, double weight, double height, double text_position) {
     if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.barcode(text, type, weight, height, text_position);
+      kPrinterPresenter.barcode(text, (int) type, (int) weight, (int) height, (int) text_position);
     } else {
       TectoySunmiPrint.getInstance().initPrinter();
-      TectoySunmiPrint.getInstance().printBarCode(text, type, weight, height, text_position);
+      TectoySunmiPrint.getInstance().printBarCode(text, (int) type, (int) weight, (int) height, (int) text_position);
       TectoySunmiPrint.getInstance().feedPaper();
     }
   }
 
-  @ReactMethod
-  public void openCashBox(final Promise promise) {
+  @Override
+  public void openCashBox(Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
 
     } else {
@@ -133,7 +133,7 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
+  @Override
   public void printText(String texto) {
     if (getDeviceName().equals("SUNMI K2")) {
       kPrinterPresenter.printText(texto);
@@ -142,8 +142,8 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void printRaw(ReadableArray message, int lines) {
+  @Override
+  public void printRaw(ReadableArray message, double lines) {
 
     byte[] decoded = new byte[message.size()];
 
@@ -156,11 +156,11 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     } else {
       TectoySunmiPrint.getInstance().initPrinter();
       TectoySunmiPrint.getInstance().sendRawData(decoded);
-      TectoySunmiPrint.getInstance().printAdvanceLines(lines);
+      TectoySunmiPrint.getInstance().printAdvanceLines((int) lines);
     }
   }
 
-  @ReactMethod
+  @Override
   public void feed3lines() {
     if (getDeviceName().equals("SUNMI K2")) {
       kPrinterPresenter.print3Line();
@@ -169,17 +169,17 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void feedAdvancesLines(int av) {
+  @Override
+  public void feedAdvancesLines(double av) {
     if (getDeviceName().equals("SUNMI K2")) {
-      kPrinterPresenter.printAdvanceLines(av);
+      kPrinterPresenter.printAdvanceLines((int) av);
     } else {
-      TectoySunmiPrint.getInstance().printAdvanceLines(av);
+      TectoySunmiPrint.getInstance().printAdvanceLines((int) av);
     }
   }
 
-  @ReactMethod
-  public void getStatus(final Promise promise) {
+  @Override
+  public void getStatus(Promise promise) {
     JSONObject json = new JSONObject();
 
     String result = "UNDEFINED";
@@ -328,11 +328,11 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   // -------------- LAMPADA
   // -----------------------------------------------------------------------------------------------------------------------
 
-  @ReactMethod
-  private void Lampada_ControlarLampada(int status, String lamp, final Promise promise) {
+  @Override
+  public void Lampada_ControlarLampada(double status, String lamp, Promise promise) {
     if (getDeviceName().contains("K2")) {
       try {
-        lampHelper.ControlarLuz(status, lamp);
+        lampHelper.ControlarLuz((int) status, lamp);
         promise.resolve(true);
       } catch (Throwable e) {
         promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
@@ -342,11 +342,11 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  private void Lampada_ControlarLampadaLoop(int status, double onTime, double offTime, String lamp, final Promise promise) {
+  @Override
+  public void Lampada_ControlarLampadaLoop(double status, double onTime, double offTime, String lamp, Promise promise) {
     if (getDeviceName().contains("K2")) {
       try {
-        lampHelper.ControlarLuzLoop(status, (long) onTime, (long) offTime, lamp);
+        lampHelper.ControlarLuzLoop((int) status, (long) onTime, (long) offTime, lamp);
         promise.resolve(true);
       } catch (Throwable e) {
         promise.reject(e.getClass().getSimpleName(), e.getMessage(), e.fillInStackTrace());
@@ -356,8 +356,8 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  private void Lampada_Desligar(final Promise promise) {
+  @Override
+  public void Lampada_Desligar(Promise promise) {
     if (getDeviceName().contains("K2")) {
       try {
         lampHelper.DesligarLuz();
@@ -374,42 +374,30 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   // -------------- LCD
   // -----------------------------------------------------------------------------------------------------------------------
 
-  @ReactMethod
-  private void LCD_ControlarLCD(int flag, final Promise promise) {
+  @Override
+  public void LCD_ControlarLCD(double flag, Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
 
     } else {
-      TectoySunmiPrint.getInstance().controlLcd(flag, promise);
+      TectoySunmiPrint.getInstance().controlLcd((int) flag, promise);
     }
   }
 
-  @ReactMethod
-  private void LCD_EnviarTexto(String text, int size, boolean fill, final Promise promise) {
+  @Override
+  public void LCD_EnviarTexto(String text, double size, boolean fill, Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
 
     } else {
-      TectoySunmiPrint.getInstance().sendTextToLcd(text, size, fill, promise);
+      TectoySunmiPrint.getInstance().sendTextToLcd(text, (int) size, fill, promise);
     }
   }
 
-  @ReactMethod
-  private void LCD_EnviarTextos(String text1, int text1_align,
-
-                                String text2, int text2_align,
-
-                                String text3, int text3_align,
-
-                                final Promise promise) {
+  @Override
+  public void LCD_EnviarTextos(String text1, double text1_align, String text2, double text2_align, String text3, double text3_align, Promise promise) {
     if (getDeviceName().equals("SUNMI K2")) {
 
     } else {
-      TectoySunmiPrint.getInstance().sendTextsToLcd(text1, text1_align,
-
-        text2, text2_align,
-
-        text3, text3_align,
-
-        promise);
+      TectoySunmiPrint.getInstance().sendTextsToLcd(text1, (int) text1_align, text2, (int) text2_align, text3, (int) text3_align, promise);
     }
   }
 
@@ -427,14 +415,8 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   // -------------- CÓDIGOS DE BARRAS
   // -----------------------------------------------------------------------------------------------------------------------
 
-  @ReactMethod
-  public void Barcode_Generate(String content, int format, int width, int height, int margin,
-
-                               String color, String backgroundColor,
-
-                               final Promise promise
-
-  ) {
+  @Override
+  public void Barcode_Generate(String content, double format, double width, double height, double margin, String color, String backgroundColor, Promise promise) {
     JSONObject json = new JSONObject();
 
     try {
@@ -442,7 +424,7 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
       /**
        * Gera o bitmap
        */
-      Bitmap bitmap = BitmapUtil.generateBitmap(content, format, width, height, margin, color, backgroundColor);
+      Bitmap bitmap = BitmapUtil.generateBitmap(content, (int) format, (int) width, (int) height, (int) margin, color, backgroundColor);
 
       /**
        * Converte o bitmap para BASE64
@@ -472,14 +454,14 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   // -------------- UTILIDADES
   // -----------------------------------------------------------------------------------------------------------------------
 
-  @ReactMethod
-  public void Utilidades_FecharApp(final Promise promise) {
+  @Override
+  public void Utilidades_FecharApp(Promise promise) {
     android.os.Process.killProcess(android.os.Process.myPid());
     promise.resolve(true);
   }
 
-  @ReactMethod
-  public void Utilidades_ModoFullScreen(boolean enable, final Promise promise) {
+  @Override
+  public void Utilidades_ModoFullScreen(boolean enable, Promise promise) {
 
     UiThreadUtil.runOnUiThread(new Runnable() {
       @Override
@@ -507,8 +489,8 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
     });
   }
 
-  @ReactMethod
-  public void Utilidades_ReiniciarDispositivo(String reason, final Promise promise) {
+  @Override
+  public void Utilidades_ReiniciarDispositivo(String reason, Promise promise) {
     PowerManager powerManager = (PowerManager) getReactApplicationContext().getSystemService(Context.POWER_SERVICE);
 
     // força o reinício
@@ -623,7 +605,7 @@ public class TectoysunmisdkModule extends ReactContextBaseJavaModule {
   }
 
   @Override
-  public Map<String, Object> getConstants() {
+  protected Map<String, Object> getTypedExportedConstants() {
     final Map<String, Object> constants = new HashMap<>();
 
     constants.put("DocumentDirectoryPath", getReactApplicationContext().getFilesDir().getAbsolutePath());
