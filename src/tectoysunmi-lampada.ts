@@ -1,11 +1,8 @@
-import { NativeModules } from 'react-native';
-
 import type {
   TectoyLampLedType,
   TectoyLampStatusType,
 } from './types/tectoysunmi-types';
-
-const { TectoySunmiSdk } = NativeModules;
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 /**
  * Controla a lampada.
@@ -17,7 +14,7 @@ const ControlarLampada = async (
   led: TectoyLampLedType
 ) => {
   try {
-    return await TectoySunmiSdk.Lampada_ControlarLampada(status, led);
+    return await NativeTectoySunmiSdk.Lampada_ControlarLampada(status, led);
   } catch (error) {
     throw error;
   }
@@ -37,7 +34,7 @@ const ControlarLampadaLoop = async (
   led: TectoyLampLedType
 ) => {
   try {
-    return await TectoySunmiSdk.Lampada_ControlarLampadaLoop(
+    return await NativeTectoySunmiSdk.Lampada_ControlarLampadaLoop(
       status,
       onTime,
       offTime,
@@ -50,7 +47,7 @@ const ControlarLampadaLoop = async (
 
 const Desligar = async () => {
   try {
-    return await TectoySunmiSdk.Lampada_Desligar();
+    return await NativeTectoySunmiSdk.Lampada_Desligar();
   } catch (error) {
     throw error;
   }
