@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.27.6",
-    "react": "17.0.2",
-    "react-native": "0.68.6"
+    "react": "19.1.0",
+    "react-native": "0.79.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
