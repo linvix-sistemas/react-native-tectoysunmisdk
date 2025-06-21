@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.fbreact.specs.NativeTectoySunmiSdkSpec;
+import com.tectoysunmisdk.specs.NativeTectoySunmiSdkSpec;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.UiThreadUtil;
