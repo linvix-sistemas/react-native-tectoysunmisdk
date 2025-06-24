@@ -1,8 +1,5 @@
-import { NativeModules } from 'react-native';
-
 import type { TectoyBarcodeGerarType } from './types/tectoysunmi-types';
-
-const { TectoySunmiSdk } = NativeModules;
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 const Gerar = async (data: TectoyBarcodeGerarType) => {
   try {
@@ -17,7 +14,7 @@ const Gerar = async (data: TectoyBarcodeGerarType) => {
       data.margem = 0;
     }
 
-    const result = await TectoySunmiSdk.Barcode_Generate(
+    const result = await NativeTectoySunmiSdk.Barcode_Generate(
       data.conteudo,
       +data.formato, // int
       +data.largura, // int

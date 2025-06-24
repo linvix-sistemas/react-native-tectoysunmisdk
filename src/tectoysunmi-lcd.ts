@@ -1,11 +1,8 @@
-import { NativeModules } from 'react-native';
-
 import type {
   TectoyLCDFuncaoType,
   TectoyLCDMultiTextoType,
 } from './types/tectoysunmi-types';
-
-const { TectoySunmiSdk } = NativeModules;
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 /**
  * Controla o LCD.
@@ -13,7 +10,7 @@ const { TectoySunmiSdk } = NativeModules;
  */
 const ControlarLCD = async (funcao: TectoyLCDFuncaoType) => {
   try {
-    return await TectoySunmiSdk.LCD_ControlarLCD(funcao);
+    return await NativeTectoySunmiSdk.LCD_ControlarLCD(funcao);
   } catch (error) {
     throw error;
   }
@@ -29,7 +26,7 @@ const EnviarTexto = async (
       throw new Error('Tamanho da fonte não pode ser maior do que 40');
     }
 
-    return await TectoySunmiSdk.LCD_EnviarTexto(
+    return await NativeTectoySunmiSdk.LCD_EnviarTexto(
       texto,
       tamanho_fonte,
       preencher
@@ -41,7 +38,7 @@ const EnviarTexto = async (
 
 const EnviarTextos = async (data: TectoyLCDMultiTextoType) => {
   try {
-    return await TectoySunmiSdk.LCD_EnviarTextos(
+    return await NativeTectoySunmiSdk.LCD_EnviarTextos(
       data.texto1,
       data.texto1_peso_tamanho,
 

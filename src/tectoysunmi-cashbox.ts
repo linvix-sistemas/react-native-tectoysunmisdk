@@ -1,10 +1,8 @@
-import { NativeModules } from 'react-native';
-
-const { TectoySunmiSdk } = NativeModules;
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 const AbrirGaveta = async () => {
   try {
-    return await TectoySunmiSdk.openCashBox();
+    return await NativeTectoySunmiSdk.openCashBox();
   } catch (error) {
     throw error;
   }
