@@ -1,15 +1,13 @@
-import { NativeModules } from 'react-native';
+import NativeTectoySunmiSdk from '../specs/NativeTectoySunmiSdk';
 
-const TSSDK = NativeModules.TectoySunmiSdk;
+const constants = NativeTectoySunmiSdk.getConstants();
 
-export const DocumentDirectoryPath = TSSDK.DocumentDirectoryPath;
-export const CachesDirectoryPath = TSSDK.CachesDirectoryPath;
-export const TemporaryDirectoryPath = TSSDK.TemporaryDirectoryPath;
-export const PicturesDirectoryPath = TSSDK.PicturesDirectoryPath;
-export const DownloadDirectoryPath = TSSDK.DownloadDirectoryPath;
+export const DocumentDirectoryPath = constants.DocumentDirectoryPath;
+export const CachesDirectoryPath = constants.CachesDirectoryPath;
+export const TemporaryDirectoryPath = constants.TemporaryDirectoryPath;
+export const PicturesDirectoryPath = constants.PicturesDirectoryPath;
+export const DownloadDirectoryPath = constants.DownloadDirectoryPath;
 
-export const ExternalStorageDirectoryPath = TSSDK.ExternalStorageDirectoryPath;
-export const AppExternalFilesDirectoryPath =
-  TSSDK.AppExternalFilesDirectoryPath;
-export const AppExternalCachesDirectoryPath =
-  TSSDK.AppExternalCachesDirectoryPath;
+export const ExternalStorageDirectoryPath = constants.ExternalStorageDirectoryPath;
+export const AppExternalFilesDirectoryPath = constants.AppExternalFilesDirectoryPath;
+export const AppExternalCachesDirectoryPath = constants.AppExternalCachesDirectoryPath;

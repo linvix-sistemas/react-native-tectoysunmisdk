@@ -15,13 +15,31 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "TectoySunmiSdkExample.app"
-               BlueprintName = "TectoySunmiSdkExample"
-               ReferencedContainer = "container:TectoySunmiSdkExample.xcodeproj">
+               BuildableName = "TectoysunmisdkExample.app"
+               BlueprintName = "TectoysunmisdkExample"
+               ReferencedContainer = "container:TectoysunmisdkExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "TectoysunmisdkExampleTests.xctest"
+               BlueprintName = "TectoysunmisdkExampleTests"
+               ReferencedContainer = "container:TectoysunmisdkExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -37,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TectoySunmiSdkExample.app"
-            BlueprintName = "TectoySunmiSdkExample"
-            ReferencedContainer = "container:TectoySunmiSdkExample.xcodeproj">
+            BuildableName = "TectoysunmisdkExample.app"
+            BlueprintName = "TectoysunmisdkExample"
+            ReferencedContainer = "container:TectoysunmisdkExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -54,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TectoySunmiSdkExample.app"
-            BlueprintName = "TectoySunmiSdkExample"
-            ReferencedContainer = "container:TectoySunmiSdkExample.xcodeproj">
+            BuildableName = "TectoysunmisdkExample.app"
+            BlueprintName = "TectoysunmisdkExample"
+            ReferencedContainer = "container:TectoysunmisdkExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

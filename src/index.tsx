@@ -1,4 +1,5 @@
-import { NativeModules, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 import TecToySunmiPrinterSDK from './tectoysunmi-printer';
 import TecToySunmiCashBoxSDK from './tectoysunmi-cashbox';
@@ -14,16 +15,10 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-NativeModules.TectoySunmiSdk
-  ? NativeModules.TectoySunmiSdk
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+// Validate that the native module is available
+if (!NativeTectoySunmiSdk) {
+  throw new Error(LINKING_ERROR);
+}
 
 const TecToySunmiSDK = {
   impressora: TecToySunmiPrinterSDK,

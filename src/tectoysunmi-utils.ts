@@ -1,10 +1,8 @@
-import { NativeModules } from 'react-native';
-
-const { TectoySunmiSdk } = NativeModules;
+import NativeTectoySunmiSdk from './specs/NativeTectoySunmiSdk';
 
 const FecharApp = async () => {
   try {
-    return await TectoySunmiSdk.Utilidades_FecharApp();
+    return await NativeTectoySunmiSdk.Utilidades_FecharApp();
   } catch (error) {
     throw error;
   }
@@ -12,7 +10,7 @@ const FecharApp = async () => {
 
 const ModoFullScreen = async (ativar: boolean = true) => {
   try {
-    return await TectoySunmiSdk.Utilidades_ModoFullScreen(ativar);
+    return await NativeTectoySunmiSdk.Utilidades_ModoFullScreen(ativar);
   } catch (error) {
     throw error;
   }
@@ -20,7 +18,7 @@ const ModoFullScreen = async (ativar: boolean = true) => {
 
 const ReiniciarDispositivo = async (motivo = '') => {
   try {
-    return await TectoySunmiSdk.Utilidades_ReiniciarDispositivo(motivo);
+    return await NativeTectoySunmiSdk.Utilidades_ReiniciarDispositivo(motivo);
   } catch (error) {
     throw error;
   }
